@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "next": "^8.0.3",
+    "next-routes": "^1.4.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build src",
+    "start": "next start"
+  },
+  "name": "turing-react-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ngozi-ekekwe/turing-react-test.git",
+  "author": "ngozi-ekekwe <ngozi.ekekwe@andela.com>",
+  "license": "MIT"
+}
