@@ -1,11 +1,4 @@
 import React from 'react';
+import '../styles/styles.scss';
 
-const home = () => {
-  return (
-    <div>
-      this is home
-    </div>
-  );
-};
-
-export default home;
+export default () => <div className='example'>Hello World!</div>
