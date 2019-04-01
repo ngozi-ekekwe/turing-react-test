@@ -1,9 +1,3 @@
 {
-  "presets": ["next/babel"],
-  "plugins": [
-    "babel-plugin-root-import",
-    "@babel/plugin-proposal-async-generator-functions",
-    "@babel/plugin-proposal-optional-chaining",
-    "babel-plugin-syntax-dynamic-import"
-  ]
+  "presets": ["next/babel"]
 }

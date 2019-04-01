@@ -1,4 +1,4 @@
 import React from 'react';
-import '../styles/styles.scss';
+// import '../styles/styles.scss';
 
-export default () => <div className='example'>Hello World!</div>
+export default () => <p className='example'>Hello World!</p>

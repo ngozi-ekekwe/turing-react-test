@@ -18,12 +18,22 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build src",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest"
   },
   "name": "turing-react-test",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/ngozi-ekekwe/turing-react-test.git",
   "author": "ngozi-ekekwe <ngozi.ekekwe@andela.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "babel-jest": "^24.5.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "jest": "^24.5.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.8.6"
+  }
 }
