@@ -1,6 +1,7 @@
 export default {
   department: {
     departments: [],
+    departmentId: null,
     error: null
   },
   category: {

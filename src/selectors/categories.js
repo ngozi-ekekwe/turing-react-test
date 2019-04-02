@@ -16,9 +16,10 @@ export const getAllCategories = customSelectorCreator(
   [getCategories, getCurrentDepartment],
   (categories, departmentId) => {
     if (departmentId) {
-      return categories.find((category) => category.department_id === departmentId)
+      return categories.rows.filter((category) => category.department_id === departmentId
+      )
     }
-    return categories
+    return categories.rows
   },
 );
 

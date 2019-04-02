@@ -24,6 +24,11 @@ class Header extends Component {
               </div>
             </div>
             <div className="col-4 header-sections">
+              <ul className="header-items">
+                <li>
+                  <button onClick={() => this.onDepartmentChange()}>All</button>
+                </li>
+              </ul>
               {departments && departments.map((department, i) => {
                 return (<ul className="header-items" key={`department-${i}`}>
                   <li>
@@ -54,7 +59,7 @@ const mapDispatchToProps = (dispatch) => {
   return ({
     getAllDepartments: () => dispatch({ type: 'GET_ALL_DEPARTMENTS' }),
     onDepartmentChange: (departmentId) => {
-      return dispatch({ type: 'SET_CURRENT_DEPARTMENT', departmentId})
+      return dispatch({ type: 'SET_CURRENT_DEPARTMENT', departmentId })
     }
   });
 }

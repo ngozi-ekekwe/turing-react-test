@@ -16,7 +16,7 @@ class ProductLayout extends Component {
             <div className="col-9">
               <div className="row space-evenly">
                 {
-                  products.count > 1 && products.rows.map((product, i) => {
+                  products && products.length > 0 && products.map((product, i) => {
                     return <ProductCard product={product} key={`product-${i}`} />
                   })
                 }

@@ -1,6 +1,6 @@
 import { put, take, call } from 'redux-saga/effects';
 
-import { getDepartments, getCategoriesByDepartment, getProductsByDepartment } from '../../services/api';
+import { getDepartments, getCategoriesByDepartment, getProductsByDepartment, getAllProducts } from '../../services/api';
 import { getAllDepartmentsSuccess, getAllDeprtmentsFailure } from '../actions/departments';
 import { getAllCategoriesSuccess } from '../actions/categories';
 import { getAllProductsSuccess } from '../actions/products';
@@ -16,14 +16,16 @@ export function* getAllDepartments() {
 }
 
 export function* getCategoriesProducts(departmentId) {
+  let products
   try {
-    // const categories = yield call(getCategoriesByDepartment, departmentId)
-    // const products = yield call(getProductsByDepartment, departmentId)
-    // yield put(getAllCategoriesSuccess(categories))
-    // yield put(getAllProductsSuccess(products))
+    products = yield call(getAllProducts)
+    if (departmentId) {
+      products = yield call(getProductsByDepartment, departmentId)
+    }
+    yield put(getAllProductsSuccess(products))
   }
   catch (err) {
-    // yield put(getAllDeprtmentsFailure(err))
+    yield put(getAllDeprtmentsFailure(err))
   }
 }
 

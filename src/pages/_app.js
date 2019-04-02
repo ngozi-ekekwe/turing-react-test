@@ -21,7 +21,7 @@ class MyApp extends App {
   render () {
     const { Component, pageProps, store } = this.props
 
-    console.log(store.getState())
+    // console.log(store.getState())
     return (
       <Container>
         <Provider store={store}>

@@ -6,7 +6,7 @@ const SideBar = ({ categories }) => {
       <p className="categories">categories</p>
       <div className="category-listing">
         {
-          categories.count > 0 && categories.rows.map((category, i) => {
+          categories && categories.length > 0 && categories.map((category, i) => {
             return (
               <ul className="category-list" key={`category-${i}`}>
                 <li className="category-items"><input type="checkbox" /><p>{category.name}</p></li>
