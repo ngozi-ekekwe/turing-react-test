@@ -45,3 +45,13 @@ export function getAllProducts() {
   const path = 'products';
   return apiGetRequest(path);
 }
+
+export function getCategoriesByDepartment(departmentId) {
+  const path = `categories/inDepartment/${departmentId}`;
+  return apiGetRequest(path)
+}
+
+export function getProductsByDepartment(departmentId) {
+  const path = `products/inDepartment/${departmentId}`;
+  return apiGetRequest(path)
+}

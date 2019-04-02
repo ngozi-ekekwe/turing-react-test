@@ -8,6 +8,10 @@ class Header extends Component {
     this.props.getAllDepartments();
   }
 
+  onDepartmentChange = (departmentId) => {
+    return this.props.onDepartmentChange(departmentId)
+  }
+
   render() {
     const { departments } = this.props;
     return (
@@ -22,7 +26,9 @@ class Header extends Component {
             <div className="col-4 header-sections">
               {departments && departments.map((department, i) => {
                 return (<ul className="header-items" key={`department-${i}`}>
-                  <Link to="/"><a href="/">{department.name}</a></Link>
+                  <li>
+                    <button onClick={() => this.onDepartmentChange(department.department_id)}>{department.name}</button>
+                  </li>
                 </ul>)
               })}
             </div>
@@ -46,7 +52,10 @@ function mapStateToProps(state, props) {
 
 const mapDispatchToProps = (dispatch) => {
   return ({
-    getAllDepartments: () => dispatch({ type: 'GET_ALL_DEPARTMENTS' })
+    getAllDepartments: () => dispatch({ type: 'GET_ALL_DEPARTMENTS' }),
+    onDepartmentChange: (departmentId) => {
+      return dispatch({ type: 'SET_CURRENT_DEPARTMENT', departmentId})
+    }
   });
 }
 

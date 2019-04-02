@@ -6,7 +6,6 @@ import ProductCard from '../components/ProductCard';
 class ProductLayout extends Component {
   render() {
     const { categories, products } = this.props;
-    console.log(products.rows)
     return (
       <div className="products">
         <div className="container">

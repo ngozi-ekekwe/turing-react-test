@@ -21,10 +21,13 @@
   justify-content: space-between;
 }
 
-.header-items a {
+.header-items button {
   color: $color-white;
   font-family: $font-montserrat;
-  font-size: $fontSize-small-1
+  font-size: $fontSize-small-1;
+  background-color: inherit;
+  border: 0;
+  cursor: pointer;
 }
 
 .search-wrapper {
