@@ -21,6 +21,10 @@
   }
 }
 
+.top-bar.inverse {
+  background-color: $color-grey;
+}
+
 .top-bar-auth a {
   color: $color-pink;
 }

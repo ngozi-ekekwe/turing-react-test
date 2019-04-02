@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from '../routes';
 
-const TopBar = () => {
+const TopBar = ({ type}) => {
   return (
-    <div className="top-bar">
+    <div className={`top-bar ${type}`}>
       <div className="container">
         <div className="row">
           <div className="col-4">
