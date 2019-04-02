@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductLayout from '../layouts/ProductLayout';
+import { getAllCategories } from '../selectors/categories';
 
 class Home extends Component {
 
@@ -25,7 +26,7 @@ class Home extends Component {
 function mapStateToProps(state, props) {
   return {
     departments: state.department.departments,
-    categories: state.category.categories,
+    categories: getAllCategories(state, props),
     products: state.product.products
   };
 }
