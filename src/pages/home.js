@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-// import '../styles/styles.scss';
+import { connect } from 'react-redux';
+import DefaultLayout from '../layouts/DefaultLayout';
 
 class Home extends Component {
 
@@ -9,7 +9,11 @@ class Home extends Component {
   }
 
   render() {
-    return <p className='example'>Hello World!</p>
+    return (
+      <DefaultLayout>
+        <div></div>
+      </DefaultLayout>
+    )
   } 
 }
  

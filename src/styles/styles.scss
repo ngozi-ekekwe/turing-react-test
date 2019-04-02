@@ -1,1 +1,8 @@
+@import './_reset.scss';
 @import './_variables.scss';
+@import './_fonts.scss';
+@import './_typography.scss';
+@import '~bootstrap/scss/_mixins.scss';
+@import '~bootstrap/scss/bootstrap-grid.scss';
+@import './components/header.scss';
+@import './components/topBar.scss';
