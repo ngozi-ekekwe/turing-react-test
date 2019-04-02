@@ -6,5 +6,9 @@ export default {
   category: {
     categories: [],
     error: null
+  },
+  product: {
+    products: [],
+    error: null
   }
 }

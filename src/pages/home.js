@@ -8,13 +8,14 @@ class Home extends Component {
   componentDidMount() {
     this.props.getAllDepartments()
     this.props.getAllCategoies()
+    this.props.getAllProducts()
   }
 
   render() {
-    const { categories } = this.props;
+    const { categories, products } = this.props;
     return (
       <DefaultLayout>
-        <ProductLayout categories={categories} />
+        <ProductLayout categories={categories} products={products} />
       </DefaultLayout>
     )
   } 
@@ -23,14 +24,16 @@ class Home extends Component {
 function mapStateToProps(state, props) {
   return {
     departments: state.department.departments,
-    categories: state.category.categories
+    categories: state.category.categories,
+    products: state.product.products
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return ({
     getAllDepartments: () => dispatch({ type: 'GET_ALL_DEPARTMENTS' }),
-    getAllCategoies: () => dispatch({ type: 'GET_ALL_CATEGORIES' })
+    getAllCategoies: () => dispatch({ type: 'GET_ALL_CATEGORIES' }),
+    getAllProducts: () => dispatch({ type: 'GET_ALL_PRODUCTS' })
   });
 }
 

@@ -40,3 +40,8 @@ export function getCategories() {
   const path = 'categories';
   return apiGetRequest(path)
 }
+
+export function getAllProducts() {
+  const path = 'products';
+  return apiGetRequest(path);
+}

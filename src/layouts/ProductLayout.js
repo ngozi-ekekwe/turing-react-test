@@ -4,7 +4,8 @@ import SideBar from '../components/SideBar';
 
 class ProductLayout extends Component {
   render() {
-    const { categories } = this.props;
+    const { categories, products } = this.props;
+    console.log(products.rows)
     return (
       <div className="products">
         <div className="container">
@@ -12,7 +13,9 @@ class ProductLayout extends Component {
             <div className="col-3">
               <SideBar categories={categories} />
             </div>
-            <div className="col-9"></div>
+            <div className="col-9">
+              
+            </div>
           </div>
         </div>
       </div>
