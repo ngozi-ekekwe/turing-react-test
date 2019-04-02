@@ -1,14 +1,20 @@
 h1 {
   font-size: $fontSize-large;
   color: $color-black;
+  font-weight: bold;
+  font-family: $font-montserrat
 }
 
 h2 {
   font-size: $fontSize-meduim;
+  font-family: $font-montserrat;
   color: $color-black;
+  font-weight: bold;
 }
 
 h3 {
   font-size: $fontSize-small;
+  font-weight: bold;
   color: $color-black;
+  font-family: $font-montserrat
 }

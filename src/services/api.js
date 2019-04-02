@@ -1,4 +1,5 @@
 import { agent } from 'superagent';
+import 'isomorphic-fetch';
 const rootEndpoint = process.env.ROOT_ENDPOINT;
 
 export const endpoint = (path) => {
@@ -10,11 +11,11 @@ export const endpoint = (path) => {
 
 const setHeaderMethod = (requestType, requestBody) => {
   const newBody = JSON.stringify(requestBody)
-  const token = localStorage.getItem('token')
+  // const token = localStorage.getItem('token')
   return {
     method: requestType,
     headers: new Headers({
-      'user-key': token,
+      // 'user-key': token,
       'Content-Type': 'application/json'
     }),
     body: newBody
@@ -54,4 +55,14 @@ export function getCategoriesByDepartment(departmentId) {
 export function getProductsByDepartment(departmentId) {
   const path = `products/inDepartment/${departmentId}`;
   return apiGetRequest(path)
+}
+
+export function getProductById(productId) {
+  const path = `products/${productId}`;
+  return apiGetRequest(path);
+}
+
+export function getProductReviews(productId) {
+  const path = `products/${productId}/reviews`;
+  return apiGetRequest(path);
 }

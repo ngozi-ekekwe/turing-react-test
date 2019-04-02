@@ -15,7 +15,6 @@ class Home extends Component {
 
   render() {
     const { categories, products } = this.props;
-    console.log(products)
     return (
       <DefaultLayout>
         <ProductLayout categories={categories} products={products} />

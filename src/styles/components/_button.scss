@@ -1,11 +1,13 @@
 .btn {
   background-color: $color-pink;
+  font-family: $font-montserrat;
   border-radius: 24px;
   color: $color-white;
   height: 35px;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
   border-color:  $color-pink;
+  font-weight: bold;
   cursor: pointer;
 }
 .txt-align {

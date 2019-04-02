@@ -42,3 +42,40 @@
     background-color: rgba(255, 255, 255, 0.5)
   }
 }
+
+.header__shopping-cart {
+  position: relative;
+
+  .shopping-cart__number-of-items {
+    position: absolute;
+    top: 48%;
+    left: 1px;
+    right: 0;
+    z-index:10;
+    text-align:center;
+    font-size: 12px;
+    letter-spacing:-0.04em;
+    font-family: $font-montserrat;
+    font-weight: bold;
+    pointer-events: none;
+    color: $color-black;
+    line-height:0em;
+    @media (-webkit-min-device-pixel-ratio: 3) {
+      left: 2px;
+    }
+  }
+
+  .shopping-cart__icon {
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    color: $color-black;
+    font-family: $font-montserrat;
+    font-size: 16px;
+    background-color: unset;
+  }
+}
+
+.align-center {
+  align-items: center;
+}

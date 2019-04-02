@@ -8,11 +8,11 @@ import createStore from '../redux/store'
 import '../styles/styles.scss';
 
 class MyApp extends App {
-  static async getInitialProps ({ Component, ctx }) {
+  static async getInitialProps ({ Component, req, ctx }) {
     let pageProps = {}
 
     if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps({ ctx })
+      pageProps = await Component.getInitialProps(ctx)
     }
 
     return { pageProps }
@@ -20,8 +20,6 @@ class MyApp extends App {
 
   render () {
     const { Component, pageProps, store } = this.props
-
-    // console.log(store.getState())
     return (
       <Container>
         <Provider store={store}>

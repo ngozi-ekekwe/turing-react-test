@@ -25,8 +25,13 @@
     cursor: pointer;
   }
 
-  p {
+  label {
     margin-left: 8px;
+    cursor: pointer;
+  }
+  input:checked + label {
+    color: $color-pink;
+    font-weight: bold;
   }
 }
 

@@ -1,7 +1,8 @@
 .top-bar {
   height: 48px;
   display: flex;
-  align-items: center;
+  // align-items: center;
+  padding: 1rem 0;
   color: $color-black;
   font-family: $font-montserrat;
   font-weight: bold;
@@ -18,6 +19,11 @@
   ul {
     display: flex;
     justify-content: space-between;
+  }
+
+  button {
+    border: 0;
+    cursor: pointer;
   }
 }
 
