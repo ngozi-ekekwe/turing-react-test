@@ -1,0 +1,39 @@
+.product-card {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  background-color: $color-white;
+  height: 336px;
+  margin-top: 24px;
+  margin-right: 26px;
+}
+
+.space-evenly {
+  justify-content: center;
+}
+
+.thumbnail {
+  padding-top: 32px;
+  height: 163px;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+}
+
+.product-name {
+  color: $color-black;
+  font-family: $font-montserrat;
+  font-weight: bold;
+  font-size: $fontSize-small;
+  margin-top: 26px;
+  text-align: center;
+}
+
+.product-price {
+  color: $color-pink;
+  font-family: $font-montserrat;
+  font-weight: bold;
+  font-size: $fontSize-small;
+  margin-top: 26px;
+  text-align: center;
+}
