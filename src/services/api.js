@@ -35,3 +35,8 @@ export function getDepartments() {
   const path = 'departments';
   return apiGetRequest(path)
 }
+
+export function getCategories() {
+  const path = 'categories';
+  return apiGetRequest(path)
+}

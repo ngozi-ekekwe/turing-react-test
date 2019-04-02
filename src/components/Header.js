@@ -10,20 +10,19 @@ class Header extends Component {
 
   render() {
     const { departments } = this.props;
-    console.log(departments)
     return (
       <div className="header">
         <div className="container">
           <div className="row">
             <div className="col-4">
               <div className="brand">
-                <Link to="/">SHOPMATE</Link>
+                <Link to="/"><a href="/">SHOPMATE</a></Link>
               </div>
             </div>
             <div className="col-4 header-sections">
-              {departments && departments.map((department) => {
-                return (<ul className="header-items">
-                  <Link>{department.name}</Link>
+              {departments && departments.map((department, i) => {
+                return (<ul className="header-items" key={`department-${i}`}>
+                  <Link to="/"><a href="/">{department.name}</a></Link>
                 </ul>)
               })}
             </div>

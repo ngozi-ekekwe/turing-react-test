@@ -1,0 +1,35 @@
+.categories {
+  color: $color-grey;
+  font-family: $font-montserrat;
+  font-weight: bold;
+  font-size: $fontSize-small;
+  padding: 20px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.category-listing {
+  background-color: $color-white;
+  padding: 20px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.category-items {
+  display: flex;
+  align-items: center;
+  font-family: $font-open-sans;
+  color: $color-black;
+  font-size: $fontSize-small;
+  cursor: pointer;
+
+  input {
+    cursor: pointer;
+  }
+
+  p {
+    margin-left: 8px;
+  }
+}
+
+.category-list + .category-list {
+  margin-top: 0.5rem;
+}

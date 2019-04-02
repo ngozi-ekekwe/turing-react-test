@@ -1,0 +1,26 @@
+.top-bar {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  color: $color-black;
+  font-family: $font-montserrat;
+  font-weight: bold;
+  font-size: $fontSize-small-1;
+
+  span {
+    padding: 0 0.3rem;
+  }
+
+  a {
+    color: $color-black;
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.top-bar-auth a {
+  color: $color-pink;
+}
