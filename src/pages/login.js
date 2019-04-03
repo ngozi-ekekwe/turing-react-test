@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import AuthenticationLayout from '../layouts/AuthLayout';
 import InputWrapper from '../components/Input';
 import Button from '../components/Button';
 import { loginFields } from '../helpers/auth'
+import { loginCustomer } from '../redux/actions/customers';
 
 
 class Login extends Component {
@@ -22,18 +24,17 @@ class Login extends Component {
 
   onClick = () => {
     this.setState({ loading: true })
-    const { loginUser } = this.props;
-    return loginUser(this.state)
+    const { loginCustomer } = this.props;
+    return loginCustomer(this.state)
   }
 
   render() {
     return (
       <AuthenticationLayout>
         <div className="container">
-          <div className="row">
-            <div className="col-4">
-              <h3>My Account Log In</h3>
-              <form className="mt-3">
+          <div className="row justify-content-center txt-align">
+            <div className="col-6">
+              <h3 className="mb-4">My Account Log In</h3>
                 {
                   loginFields.map((field) => {
                     return (
@@ -43,13 +44,9 @@ class Login extends Component {
                     )
                   })
                 }
-                <div className="mt-4">
-                  <Button text="LOG IN SECURELY " />
+                <div className="mt-4 txt-align">
+                  <Button text="LOG IN SECURELY" onClick={this.onClick} />
                 </div>
-              </form>
-            </div>
-            <div className="col-4">
-              <h3>Continue with</h3>
             </div>
           </div>
         </div>
@@ -58,4 +55,14 @@ class Login extends Component {
   }
 }
 
-export default Login;
+function mapStateToProps(state, props) {
+
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    loginCustomer: (customer) => dispatch(loginCustomer(customer)),
+  });
+}
+
+export default connect(null, mapDispatchToProps)(Login);

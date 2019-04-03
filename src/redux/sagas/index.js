@@ -2,7 +2,7 @@ import { all, fork } from 'redux-saga/effects';
 import { watchGetAllDepartments, watchGetCategoriesProducts } from './departments';
 import { watchGetAllCategories} from './category';
 import { watchGetProducts } from './products';
-import { watchCreateCustomer } from './customers';
+import { watchCreateCustomer, watchLoginCustomer } from './customers';
 
 export default function* rootSaga() {
   yield all([
@@ -10,6 +10,7 @@ export default function* rootSaga() {
     fork(watchGetAllCategories),
     fork(watchGetProducts),
     fork(watchGetCategoriesProducts),
-    fork(watchCreateCustomer)
+    fork(watchCreateCustomer),
+    fork(watchLoginCustomer)
   ]);
 }

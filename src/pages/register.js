@@ -32,8 +32,8 @@ class Register extends Component {
     return (
       <AuthenticationLayout>
         <div className="container">
-          <div className="row">
-            <div className="col-4">
+          <div className="row justify-content-center txt-align">
+            <div className="col-6">
               <h3 className="mb-4">Create an Account</h3>
                 {
                   signupFields.map((field) => {
@@ -44,12 +44,9 @@ class Register extends Component {
                     )
                   })
                 }
-                <div className="mt-4">
+                <div className="mt-4 txt-align">
                   <Button text="CREATE ACCOUNT" onClick={this.onClick} />
                 </div>
-            </div>
-            <div className="col-4">
-              <h3>Register with</h3>
             </div>
           </div>
         </div>

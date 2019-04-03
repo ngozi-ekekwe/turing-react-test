@@ -5,6 +5,7 @@ import TopBar from '../components/TopBar';
 const AuthenticationLayout = ({ children }) => {
   return (
     <Fragment>
+      <TopBar />
       <ProductHeader />
       {children}
     </Fragment>
