@@ -1572,6 +1572,10 @@ body-parser@1.18.3:
     raw-body "2.3.3"
     type-is "~1.6.16"
 
+body-scroll-lock@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/body-scroll-lock/-/body-scroll-lock-2.6.1.tgz#3782ff37404886faaee366968ceee40c3964d8f2"
+
 boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
@@ -4710,6 +4714,12 @@ next-redux-wrapper@^3.0.0-alpha.2:
   version "3.0.0-alpha.2"
   resolved "https://registry.yarnpkg.com/next-redux-wrapper/-/next-redux-wrapper-3.0.0-alpha.2.tgz#ccbcd362e9998a9f582abcc8bfad665686d09cc4"
 
+next-router-events@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/next-router-events/-/next-router-events-2.1.0.tgz#3efa96a8bf0e208e67183836c09d41c4d076f511"
+  dependencies:
+    tiny-emitter "^2.0.2"
+
 next-routes@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/next-routes/-/next-routes-1.4.2.tgz#736a382579a792ea69f35ae70b449acdfefa7944"
@@ -4975,6 +4985,10 @@ npm-run-path@^2.0.0:
     console-control-strings "~1.1.0"
     gauge "~2.7.3"
     set-blocking "~2.0.0"
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
 
 nth-check@~1.0.1:
   version "1.0.2"
@@ -6701,6 +6715,10 @@ timers-browserify@^2.0.4:
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.10.tgz#1d28e3d2aadf1d5a5996c4e9f95601cd053480ae"
   dependencies:
     setimmediate "^1.0.4"
+
+tiny-emitter@^2.0.2:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
 
 tmpl@1.0.x:
   version "1.0.4"
