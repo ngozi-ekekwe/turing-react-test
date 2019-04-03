@@ -1,0 +1,42 @@
+.input-wrapper {
+  border: 1px solid #f7f5ef;
+  input, select, form {
+    width: 100%;
+    height: unset !important;
+    border: unset;
+    padding: 12px 12px;
+    color: black;
+    background-color: unset;
+    font-size: 16px;
+    font-family: 'Roboto';
+  }
+  select {
+    margin: -10px 0;
+    height: 44px !important;
+    outline-color: black;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include media-breakpoint-down(sm) {
+      height: 50px !important;
+      padding: 1px 12px;
+    }
+  }
+
+  form input {
+    height: unset !important;
+  }
+}
+
+.input-wrapper + .input-wrapper {
+  margin-top: 1rem;
+}
+
+.react-input-wrapper {
+  border: 1px solid #f7f5ef;
+  background-color: white;
+  max-height: 57px;
+  margin: 0 auto;
+}

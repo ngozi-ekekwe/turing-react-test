@@ -11,11 +11,11 @@ export const endpoint = (path) => {
 
 const setHeaderMethod = (requestType, requestBody) => {
   const newBody = JSON.stringify(requestBody)
-  // const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token')
   return {
     method: requestType,
     headers: new Headers({
-      // 'user-key': token,
+      'user-key': token,
       'Content-Type': 'application/json'
     }),
     body: newBody
@@ -65,4 +65,14 @@ export function getProductById(productId) {
 export function getProductReviews(productId) {
   const path = `products/${productId}/reviews`;
   return apiGetRequest(path);
+}
+
+export function createCustomer(formData) {
+  const path = 'customers';
+  return apiPostRequest(path, formData)
+}
+
+export function loginCustomer(formData) {
+  const path = 'customers/login';
+  return apiPostRequest(path, formData)
 }

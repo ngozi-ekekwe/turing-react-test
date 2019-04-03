@@ -11,10 +11,10 @@ const TopBar = ({ type}) => {
             <div className="top-bar-auth">
               <p>Hi! 
                 <span>
-                <Link to="/"><a href="/">sign in</a></Link>
+                <Link to="/login"><a href="/">sign in</a></Link>
                 </span> or  
                 <span>
-                  <Link to="/"><a href="/">Register</a></Link>
+                  <Link to="/register"><a href="/">Register</a></Link>
                 </span> 
               </p>
             </div>

@@ -11,5 +11,9 @@ export default {
   product: {
     products: [],
     error: null
+  },
+  customer: {
+    customer: {},
+    error: null
   }
 }
