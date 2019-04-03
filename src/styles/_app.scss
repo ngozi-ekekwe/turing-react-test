@@ -10,3 +10,17 @@
     background:$color-pink;
   }
 }
+
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+button:focus, button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.strike {
+  text-decoration: line-through;
+}

@@ -15,7 +15,7 @@ class Product extends Component {
   }
   render() {
     const { product, productReviews } = this.props;
-    console.log(productReviews, 'productReviews')
+    // console.log(productReviews, 'productReviews')
     return (
       <Fragment>
       <TopBar type="inverse" />

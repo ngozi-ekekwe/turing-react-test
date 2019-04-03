@@ -2,7 +2,6 @@ import React from 'react';
 
 const ProductReviews = ({ reviews }) => {
   const getFirstReview = reviews[0]
-  console.log(reviews)
   return (
     <div className="product-reviews mt-4">
       <div className="container">

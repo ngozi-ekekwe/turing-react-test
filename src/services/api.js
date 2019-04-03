@@ -11,7 +11,10 @@ export const endpoint = (path) => {
 
 const setHeaderMethod = (requestType, requestBody) => {
   const newBody = JSON.stringify(requestBody)
-  const token = localStorage.getItem('token')
+  let token;
+  if(process.browser) {
+    const token = localStorage.getItem('token')
+  }
   return {
     method: requestType,
     headers: new Headers({

@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const ProductQuantityBox = ({
-  reduceQuantity, increaseQuantity, quantity, classname
-}) => (
-  <div className={`product__quantity-box ${classname}`}>
-      <button className={`btn product__quantity-counter ${classname}`} type="button" onClick={reduceQuantity}>
-        -
+class ProductQuantityBox extends Component {
+
+  render() {
+    const { quantity , reduceQuantity, increaseQuantity} = this.props
+    return (
+      <div className="product__quantity-box">
+        <button className="btn product__quantity-counter" type="button" onClick={reduceQuantity}>
+          -
       </button>
-      <span className={`product__cart-items-count ${classname}`}>
-        5
+        <span className="product__cart-items-count">
+          {quantity}
       </span>
-      <button className={`btn product__quantity-counter ${classname}`} type="button" onClick={increaseQuantity}>
-        +
+        <button className="btn product__quantity-counter" type="button" onClick={increaseQuantity}>
+          +
       </button>
-  </div>
-);
-
+      </div>
+    )
+  }
+}
 export default ProductQuantityBox;

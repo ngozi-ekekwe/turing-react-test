@@ -18,7 +18,7 @@ class Header extends Component {
 
   render() {
     const { departments } = this.props;
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div className="header">
         <div className="container">
@@ -43,8 +43,8 @@ class Header extends Component {
               })}
             </div>
             <div className="col-4">
-              <form className="search-wrapper">
-                <input placeholder="..search" />
+              <form>
+              <input name="search" type="text" class="form-control" placeholder="Search" autocomplete="off" />
               </form>
             </div>
           </div>
