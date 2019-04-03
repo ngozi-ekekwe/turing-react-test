@@ -12,8 +12,13 @@ class Header extends Component {
     return this.props.onDepartmentChange(departmentId)
   }
 
+  logout = () => {
+    const token = localStorage.removeItem('token');
+  }
+
   render() {
     const { departments } = this.props;
+    console.log(this.props)
     return (
       <div className="header">
         <div className="container">

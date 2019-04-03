@@ -15,5 +15,8 @@ export default {
   customer: {
     customer: {},
     error: null
+  },
+  auth: {
+    isAuthenticated: null
   }
 }
