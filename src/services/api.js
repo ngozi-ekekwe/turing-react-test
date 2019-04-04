@@ -45,8 +45,9 @@ export function getCategories() {
   return apiGetRequest(path)
 }
 
-export function getAllProducts() {
-  const path = 'products';
+export function getAllProducts(page = 1) {
+  console.log(page, 'page in API')
+  const path = `products?page=${page}`;
   return apiGetRequest(path);
 }
 

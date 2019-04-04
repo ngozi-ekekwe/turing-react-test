@@ -18,33 +18,34 @@ class Header extends Component {
 
   render() {
     const { departments } = this.props;
-    // console.log(this.props)
     return (
       <div className="header">
         <div className="container">
-          <div className="row">
-            <div className="col-4">
-              <div className="brand">
-                <Link to="/"><a href="/">SHOPMATE</a></Link>
+          <div className="row justify-content-between">
+            <div className="col-7 d-flex align-items-center justify-content-between">
+              <div className="">
+                <div className="brand">
+                  <Link to="/"><a href="/">SHOPMATE</a></Link>
+                </div>
               </div>
-            </div>
-            <div className="col-4 header-sections">
-              <ul className="header-items">
-                <li>
-                  <button onClick={() => this.onDepartmentChange()}>All</button>
-                </li>
-              </ul>
-              {departments && departments.map((department, i) => {
-                return (<ul className="header-items" key={`department-${i}`}>
+              <div className=" header-sections">
+                <ul className="header-items">
                   <li>
-                    <button onClick={() => this.onDepartmentChange(department.department_id)}>{department.name}</button>
+                    <button onClick={() => this.onDepartmentChange()}>All</button>
                   </li>
-                </ul>)
-              })}
+                </ul>
+                {departments && departments.map((department, i) => {
+                  return (<ul className="header-items" key={`department-${i}`}>
+                    <li>
+                      <button onClick={() => this.onDepartmentChange(department.department_id)}>{department.name}</button>
+                    </li>
+                  </ul>)
+                })}
+              </div>
             </div>
             <div className="col-4">
               <form>
-              <input name="search" type="text" class="form-control" placeholder="Search" autocomplete="off" />
+                <input name="search" type="text" class="form-control" placeholder="Search" autocomplete="off" />
               </form>
             </div>
           </div>

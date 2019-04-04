@@ -14,12 +14,22 @@ class Home extends Component {
     this.props.getAllProducts()
   }
 
+  setPage = (page) => {
+    this.props.setProductPage(page)
+  }
+
   render() {
     const { categories, products } = this.props;
+    const count = products.count && products.count.count ? products.count.count : products.count
     return (
       <DefaultLayout>
         <LandingPage />
-        <ProductLayout categories={categories} products={products} />
+        <ProductLayout 
+          categories={categories} 
+          products={products.rows} 
+          productCount={count}
+          setPage={this.setPage}
+          />
       </DefaultLayout>
     )
   } 
@@ -37,7 +47,8 @@ const mapDispatchToProps = (dispatch) => {
   return ({
     getAllDepartments: () => dispatch({ type: 'GET_ALL_DEPARTMENTS' }),
     getAllCategoies: () => dispatch({ type: 'GET_ALL_CATEGORIES' }),
-    getAllProducts: () => dispatch({ type: 'GET_ALL_PRODUCTS' })
+    getAllProducts: () => dispatch({ type: 'GET_ALL_PRODUCTS' }),
+    setProductPage: (page) => dispatch({type: 'SET_PAGE',  page})
   });
 }
 

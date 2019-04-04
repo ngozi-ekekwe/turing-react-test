@@ -1,15 +1,14 @@
 .top-bar {
   height: 48px;
   display: flex;
-  // align-items: center;
-  padding: 1rem 0;
+  align-items: center;
   color: $color-black;
   font-family: $font-montserrat;
-  font-weight: bold;
   font-size: $fontSize-small-1;
+  position: relative;
 
   span {
-    padding: 0 0.3rem;
+    padding: 0 0.5rem;
   }
 
   a {
@@ -33,4 +32,21 @@
 
 .top-bar-auth a {
   color: $color-pink;
+}
+
+.cart-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: $color-pink;
+  color: $color-white;
+  font-family: $font-montserrat;
+  font-weight: bold;
+  display: flex;
+  font-size: $fontSize-tiny;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 5px;
+  left: 22px;
 }

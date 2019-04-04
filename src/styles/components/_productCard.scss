@@ -1,11 +1,13 @@
 .product-card {
   background-color: $color-white;
+  border: 1px solid $color-grey;
   height: 336px;
   margin-top: 24px;
   margin-right: 10px;
+  padding: 0;
 
   &:hover {
-    border: 2px solid $color-pink;
+    border: 2px solid $color-grey;
 }
 }
 
@@ -16,6 +18,7 @@
 .thumbnail {
   padding-top: 32px;
   height: 163px;
+  background-size: cover;
 }
 
 .thumbnail img {

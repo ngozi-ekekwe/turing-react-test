@@ -10,7 +10,8 @@ export default {
   },
   product: {
     products: [],
-    error: null
+    error: null,
+    page: 1
   },
   customer: {
     customer: {},

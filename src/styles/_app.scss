@@ -34,4 +34,27 @@ img {
   background-image: url('/static/landing1.jpg');
   background-position: center;
   background-size: cover;
+
+  color: $color-white;
+  font-weight: bold;
+  font-family: $font-montserrat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $fontSize-meduim
+}
+
+.pagination {
+  font-family: $font-montserrat;
+  color: $color-black
+}
+
+.page-link {
+  border: 0;
+  color: $color-black;
+  font-family: $font-montserrat;
+}
+
+.page-item {
+  cursor: pointer;
 }

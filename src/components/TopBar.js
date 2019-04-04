@@ -29,7 +29,13 @@ const TopBar = ({ type}) => {
           <div className="col-4">
             <div className="row">
               <div className="col-4"></div>
-              <div className="col-8 d-flex align-center"><ShoppingCartIcon /><p>Your bag: $16.00</p></div>
+              <div className="col-8 d-flex align-center">
+                <div className="d-flex">
+                  <img src="/static/black.png"/>
+                  <div className="cart-badge">0</div>
+                </div>
+                <p className="pl-3">Your bag: $16.00</p>
+              </div>
             </div>
           </div>
         </div>

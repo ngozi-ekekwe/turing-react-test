@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SideBar from '../components/SideBar';
 import ProductCard from '../components/ProductCard';
+import Pagination from '../components/Pagination';
 
 class ProductLayout extends Component {
   render() {
-    const { categories, products } = this.props;
+    const { categories, products, productCount, setPage } = this.props;
     return (
       <div className="products">
         <div className="container">
@@ -14,6 +15,7 @@ class ProductLayout extends Component {
               <SideBar categories={categories} />
             </div>
             <div className="col-10">
+              <Pagination productCount={productCount} setPage={setPage} />
               <div className="row space-evenly">
                 {
                   products && products.length > 0 && products.map((product, i) => {

@@ -1,6 +1,7 @@
 import { GET_ALL_PRODUCTS,
   GET_ALL_PRODUCTS_SUCCESS,
-  GET_ALL_PRODUCTS_FAILURE } from '../actionTypes';
+  GET_ALL_PRODUCTS_FAILURE,
+  SET_PAGE } from '../actionTypes';
 import initialState from '../initialState';
 import update from "immutability-helper";
 
@@ -17,6 +18,12 @@ export default function product (state = initialState.product, action) {
         ...state,
         error: action.error
       }
+    }
+
+    case SET_PAGE: {
+      return update(state, {
+        page: { $set: action.page}
+      });
     }
     default:
       return state
