@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductLayout from '../layouts/ProductLayout';
+import LandingPage from '../components/LandingPage'
 import { getAllCategories } from '../selectors/categories';
 import { getAllProducts } from '../selectors/products';
 
@@ -17,6 +18,7 @@ class Home extends Component {
     const { categories, products } = this.props;
     return (
       <DefaultLayout>
+        <LandingPage />
         <ProductLayout categories={categories} products={products} />
       </DefaultLayout>
     )

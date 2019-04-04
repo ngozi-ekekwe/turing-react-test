@@ -1,16 +1,14 @@
 .categories {
-  color: $color-grey;
+  background-color: $color-light-grey;
   font-family: $font-montserrat;
   font-weight: bold;
   font-size: $fontSize-small;
   padding: 20px;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 .category-listing {
   background-color: $color-white;
   padding: 20px;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 .category-items {

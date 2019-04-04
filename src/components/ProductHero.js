@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Button from './Button';
 import ProductQuantityBox from './ProductQuantityBox';
+import ProductAtrributes from './ProductAtrributes';
 const imageDirectory = process.env.IMAGE_DIRECTORY
 
 class ProductHero extends Component {
@@ -9,6 +11,11 @@ class ProductHero extends Component {
     this.state = {
       quantity: 1
     }
+  }
+
+  componentDidMount() {
+    const { slug, getAllAttributes } = this.props;
+    getAllAttributes(slug)
   }
 
   increaseQuantity = () => {
@@ -29,38 +36,64 @@ class ProductHero extends Component {
   }
 
   addItemToCart() {
-    
+
   }
   render() {
     const { quantity } = this.state;
-    const { product } = this.props;
-  return (
-    <div className="product-hero">
-      <div className="container">
-        <div className="product-wrapper">
-          <div className="row">
-            <div className="col-6">
-              <img src={`${imageDirectory}${product.thumbnail}`} />
-            </div>
-            <div className="col-6">
-              <h1 className="name">{product.name}</h1>
-              <div className="d-flex">
-                <p className={`price ${product.discounted_price ? 'strike': ''}`}>${product.price}</p>
-                <p className="price discount pl-3">${product.discounted_price}</p>
-              </div>
+    const { product, attributes } = this.props;
 
-              <h3 className="mt-3 mb-3">PRODUCT DETAILS</h3>
-              <p className="product-description mb-3">{product.description}</p>
-              <ProductQuantityBox quantity={quantity} increaseQuantity={this.increaseQuantity} reduceQuantity={this.reduceQuantity}  />
-              <div className="mt-5">
-              <Button text="ADD TO CART" />
+    let colorAttributes = []
+    let sizeAttributes = [];
+    attributes && attributes.filter((attribute) => {
+      if (attribute.attribute_name === 'Color') {
+        return colorAttributes.push(attribute)
+      }
+      return sizeAttributes.push(attribute)
+    })
+
+    return (
+      <div className="product-hero">
+        <div className="container">
+          <div className="product-wrapper">
+            <div className="row">
+              <div className="col-6">
+                <img src={`${imageDirectory}${product.thumbnail}`} />
+              </div>
+              <div className="col-6">
+                <h1 className="name">{product.name}</h1>
+                <div className="d-flex">
+                  <p className={`price ${product.discounted_price ? 'strike' : ''}`}>${product.price}</p>
+                  <p className="price discount pl-3">${product.discounted_price}</p>
+                </div>
+
+                <h3 className="mt-3 mb-3">PRODUCT DETAILS</h3>
+                <p className="product-description mb-3">{product.description}</p>
+
+                {attributes && <ProductAtrributes sizeAttributes={sizeAttributes} colorAttributes={colorAttributes} attributes={attributes} />}
+                {<ProductAtrributes attributes={attributes} />}
+                <ProductQuantityBox quantity={quantity} increaseQuantity={this.increaseQuantity} reduceQuantity={this.reduceQuantity} />
+                <div className="mt-5">
+                  <Button text="ADD TO CART" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     )
   }
 }
-export default ProductHero;
+
+function mapStateToProps(state, props) {
+  return {
+    attributes: state.attribute.attributes
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    getAllAttributes: (productId) => dispatch({ type: 'GET_PRODUCT_ATTRIBUTES', productId })
+  });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductHero);

@@ -18,5 +18,9 @@ export default {
   },
   auth: {
     isAuthenticated: null
+  },
+  attribute: {
+    attribute: [],
+    error: null
   }
 }

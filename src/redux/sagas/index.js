@@ -3,6 +3,7 @@ import { watchGetAllDepartments, watchGetCategoriesProducts } from './department
 import { watchGetAllCategories} from './category';
 import { watchGetProducts } from './products';
 import { watchCreateCustomer, watchLoginCustomer } from './customers';
+import { watchProductAttributes } from './attribute';
 
 export default function* rootSaga() {
   yield all([
@@ -11,6 +12,7 @@ export default function* rootSaga() {
     fork(watchGetProducts),
     fork(watchGetCategoriesProducts),
     fork(watchCreateCustomer),
-    fork(watchLoginCustomer)
+    fork(watchLoginCustomer),
+    fork(watchProductAttributes)
   ]);
 }

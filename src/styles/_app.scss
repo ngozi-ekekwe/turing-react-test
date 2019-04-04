@@ -24,3 +24,14 @@ button:focus, button:active {
 .strike {
   text-decoration: line-through;
 }
+
+img {
+  image-rendering: auto;
+}
+
+.landing-page {
+  height: 40vh;
+  background-image: url('/static/landing1.jpg');
+  background-position: center;
+  background-size: cover;
+}

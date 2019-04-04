@@ -79,3 +79,8 @@ export function loginCustomer(formData) {
   const path = 'customers/login';
   return apiPostRequest(path, formData)
 }
+
+export function getProductAttributes(productId) {
+  const path = `attributes/inProduct/${productId}`;
+  return  apiGetRequest(path);
+}

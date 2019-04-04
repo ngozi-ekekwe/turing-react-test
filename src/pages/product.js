@@ -14,13 +14,13 @@ class Product extends Component {
     return { slug, product, productReviews };
   }
   render() {
-    const { product, productReviews } = this.props;
-    // console.log(productReviews, 'productReviews')
+    const { product, productReviews, slug } = this.props;
+
     return (
       <Fragment>
       <TopBar type="inverse" />
       <ProductHeader  />
-      <ProductHero product={product} />
+      <ProductHero product={product} slug={slug}/>
       {productReviews && <ProductReviews reviews={productReviews} />}
     </Fragment>
     )

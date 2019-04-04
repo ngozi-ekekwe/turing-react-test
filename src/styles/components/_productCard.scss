@@ -1,9 +1,12 @@
 .product-card {
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
   background-color: $color-white;
   height: 336px;
   margin-top: 24px;
-  margin-right: 26px;
+  margin-right: 10px;
+
+  &:hover {
+    border: 2px solid $color-pink;
+}
 }
 
 .space-evenly {

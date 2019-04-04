@@ -10,10 +10,10 @@ class ProductLayout extends Component {
       <div className="products">
         <div className="container">
           <div className="row">
-            <div className="col-3">
+            <div className="col-2 mt-2">
               <SideBar categories={categories} />
             </div>
-            <div className="col-9">
+            <div className="col-10">
               <div className="row space-evenly">
                 {
                   products && products.length > 0 && products.map((product, i) => {

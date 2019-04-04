@@ -1,0 +1,81 @@
+.attributes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.color:focus {
+  border: 3px solid $color-pink;
+  color: $color-white;
+}
+
+.color + .color {
+  margin-left: 10px;
+}
+
+.color-white {
+  background-color: $color-white;
+}
+
+.color-black {
+  background-color: $color-black;
+}
+
+.color-red {
+  background-color: $color-pink;
+}
+
+.color-orange {
+  background-color: $color-orange;
+}
+
+.color-yellow {
+  background-color: $color-yellow;
+}
+
+.color-blue {
+  background-color: $color-blue;
+}
+.color-green {
+  background-color: $color-green;
+}
+.color-indigo {
+  background-color: $color-indigo;
+}
+.color-purple {
+  background-color: $color-green;
+}
+
+.size {
+  font-size: $fontSize-tiny;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: $color-pink;
+  font-family: $font-montserrat;
+  cursor: pointer;
+  font-weight: bold;
+
+  width: 55px;
+  height: 24px;
+  border-radius: 2px;
+  background-color: #efefef;
+}
+
+.size  + .size  {
+  margin-left: 10px;
+}
+
+
+.size:focus {
+  background-color: $color-pink;
+  color: $color-white;
+}
