@@ -23,5 +23,10 @@ export default {
   attribute: {
     attribute: [],
     error: null
-  }
+  },
+  cart: {
+    cartItems: [],
+    cartTotal: 0,
+    previousCartItems: null,
+  },
 }

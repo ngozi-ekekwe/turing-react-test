@@ -8,7 +8,7 @@ class AuthModal extends React.Component {
   }
 
   render() {
-    const { show, handleClose, form } = this.props;
+    const { show, handleClose, form, title } = this.props;
     return (
       <>
         <Modal show={show} onHide={handleClose}>
@@ -16,15 +16,12 @@ class AuthModal extends React.Component {
           </Modal.Header>
           <Modal.Body>
             <div>
-              <div className="auth-header">Sign In</div>
+              <div className="auth-header">{title}</div>
               <div>
                 {form}
               </div>
             </div>
           </Modal.Body>
-          {/* <Modal.Footer>
-              Close
-          </Modal.Footer> */}
         </Modal>
       </>
     );

@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
 import { Link } from '../routes';
 import AuthModal from './Modal';
+import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import RegisterForm from './Register';
 
 import LoginForm from './LoginForm';
-class TopBar extends Component {
+import CartWidget from './CartWidget';
 
+class TopBar extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       show: false,
-      form: null
+      form: null,
+      title: null,
+      type: null,
+      toggleCartWidget: props.toggleCartWidget || false,
     };
+  }
+
+  toggleCartWidgetHandler = () => {
+    const { toggleCartWidget } = this.state;
+
+    clearAllBodyScrollLocks();
+    if (!toggleCartWidget) {
+      const element = document.querySelector('#menu-cart');
+      disableBodyScroll(element);
+    }
+
+    this.setState((prevState) => (
+      {
+        toggleCartWidget: !prevState.toggleCartWidget,
+        toggleSidebar: false,
+      }
+    ));
   }
 
   handleClose = () => {
@@ -22,11 +44,15 @@ class TopBar extends Component {
   handleShow = (form) => {
     switch(form) {
       case 'register': {
-        return this.setState({ show: true, form: <RegisterForm /> });
+        return this.setState({ show: true, form: <RegisterForm />, title: "Sign Up", type: null });
       }
 
       case 'login': {
-        return this.setState({ show: true, form: <LoginForm /> });
+        return this.setState({ show: true, form: <LoginForm />, title: "Login", type: null });
+      }
+
+      case 'openCart': {
+        return this.setState({ show: true, form: 'hello', title: null, type: 'cart'})
       }
 
       default: {
@@ -35,11 +61,14 @@ class TopBar extends Component {
     }
   }
   render() {
-    const { show, form } = this.state
-    const { type } = this.props;
+    const { show, form, title, type, toggleCartWidget} = this.state
     return (
       <div className={`top-bar ${type}`}>
-        <AuthModal show={show} handleClose={this.handleClose} form={form}  />
+        <AuthModal show={show} handleClose={this.handleClose} form={form} title={title}  />
+        <CartWidget
+            toggleCartWidgetHandler={this.toggleCartWidgetHandler}
+            toggleCartWidget={toggleCartWidget}
+          />
         <div className="container">
           <div className="row">
             <div className="col-4">
@@ -65,7 +94,7 @@ class TopBar extends Component {
               <div className="row">
                 <div className="col-4"></div>
                 <div className="col-8 d-flex align-center">
-                  <div className="d-flex">
+                  <div className="d-flex shopping-cart" onClick={this.toggleCartWidgetHandler}>
                     <img src="/static/black.png" />
                     <div className="cart-badge">0</div>
                   </div>

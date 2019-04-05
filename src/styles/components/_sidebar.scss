@@ -1,38 +1,102 @@
-.categories {
-  background-color: $color-light-grey;
-  font-family: $font-montserrat;
-  font-weight: bold;
-  font-size: $fontSize-small;
-  padding: 20px;
+.sidebar {
+  background: $color-white;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 550px;
+  z-index: 900;
+  // padding-top: $layout-desktop-header-height;
+  transition: transform 0s ease-out;
+  transform: translate3d(100%, 0px, 0px);
+
+  @include media-breakpoint-up(lg) { 
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.5s ease-out;
+  }
 }
 
-.category-listing {
-  background-color: $color-white;
-  padding: 20px;
+.sidebar.open {
+  transform: translateX(0);
+  overflow: auto;
 }
 
-.category-items {
+.sidebar__nav {
+  padding: 5rem 4rem 3rem;
+
+  @include media-breakpoint-up(lg) {
+    padding: 4rem 6rem 2rem;
+  }
+}
+
+.sidebar__nav--flex {
   display: flex;
-  align-items: center;
-  font-family: $font-open-sans;
-  color: $color-black;
-  font-size: $fontSize-small;
-  cursor: pointer;
+  flex-direction: column;
+}
 
-  input {
-    cursor: pointer;
+.sidebar__nav--help {
+  padding-top: 2rem;
+}
+
+.sidebar__nav--links {
+  // font-weight:$fontWeight-bold;
+  // font-size: $fontSize-medium-2;
+  line-height: 2em;
+  text-decoration: none;
+
+  @include media-breakpoint-up(lg) { 
+    // font-size: $fontSize-medium-4;
   }
 
-  label {
-    margin-left: 8px;
-    cursor: pointer;
-  }
-  input:checked + label {
-    color: $color-pink;
-    font-weight: bold;
+  &:hover {
+    color: $color-grey;
   }
 }
 
-.category-list + .category-list {
-  margin-top: 0.5rem;
+.sidebar__nav--help-links {
+  // color:$color-medium-grey;
+  // font-weight:$fontWeight-regular;
+  // font-size: $fontSize-small;
+  line-height: 2em;
+  text-transform: lowercase;
+  text-decoration: none;
+
+  @include media-breakpoint-up(lg) { 
+    // font-size: $fontSize-small-2;
+  }
+
+  &:hover {
+    color: rgba($color-grey, 0.72);
+  }
+}
+
+.sidebar__overlay {
+  position: fixed;
+  top: 0;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease 0s, bottom 0s ease 0.3s;
+}
+
+.overlay { 
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+}
+.overlay.enabled {
+  position: fixed;
+
+  .sidebar__overlay {
+    opacity: 1;
+    bottom:0;
+    transition: opacity 0.3s ease 0s;
+  }
 }

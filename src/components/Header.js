@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CartWidget from './CartWidget';
 import { Link } from '../routes';
 
 class Header extends Component {

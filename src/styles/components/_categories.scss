@@ -1,0 +1,38 @@
+.categories {
+  background-color: $color-light-grey;
+  font-family: $font-montserrat;
+  font-weight: bold;
+  font-size: $fontSize-small;
+  padding: 20px;
+}
+
+.category-listing {
+  background-color: $color-white;
+  padding: 20px;
+}
+
+.category-items {
+  display: flex;
+  align-items: center;
+  font-family: $font-open-sans;
+  color: $color-black;
+  font-size: $fontSize-small;
+  cursor: pointer;
+
+  input {
+    cursor: pointer;
+  }
+
+  label {
+    margin-left: 8px;
+    cursor: pointer;
+  }
+  input:checked + label {
+    color: $color-pink;
+    font-weight: bold;
+  }
+}
+
+.category-list + .category-list {
+  margin-top: 0.5rem;
+}

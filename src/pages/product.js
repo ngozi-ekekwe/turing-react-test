@@ -18,7 +18,7 @@ class Product extends Component {
 
     return (
       <Fragment>
-      <TopBar type="inverse" />
+      <TopBar />
       <ProductHeader  />
       <ProductHero product={product} slug={slug}/>
       {productReviews && <ProductReviews reviews={productReviews} />}
