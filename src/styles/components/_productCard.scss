@@ -43,3 +43,41 @@
   margin-top: 26px;
   text-align: center;
 }
+
+.image-thumbnails {
+  display: flex;
+}
+
+
+.image__box {
+  height: 96px;
+  width: 96px;
+  margin: 2rem 1rem;
+  cursor: pointer;
+
+  @include media-breakpoint-down(lg) {
+    margin-bottom: 2.4rem;
+  }
+
+  .instagram__box {
+    display: block;
+    white-space: nowrap;
+    height: 96px;
+    // border: 0.5rem solid $color-pink;
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+
+    @include media-breakpoint-down(lg) {
+      border-width: 0.5rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+      height: 96px;
+    }
+
+    &:hover {
+      border-color: $color-grey;
+    }
+  }
+}

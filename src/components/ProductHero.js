@@ -17,7 +17,8 @@ class ProductHero extends Component {
       size: null,
       price: '',
       quantity: 1,
-      subtotal: ''
+      subtotal: '',
+      currentImage: 1
     }
   }
 
@@ -27,9 +28,9 @@ class ProductHero extends Component {
   }
 
   onSelectAttribute = (attribute, type) => {
-    switch(type) {
-      case 'color': return this.setState({ color: attribute})
-      case 'size': return this.setState({size: attribute})
+    switch (type) {
+      case 'color': return this.setState({ color: attribute })
+      case 'size': return this.setState({ size: attribute })
       default: return ''
     }
   }
@@ -51,11 +52,17 @@ class ProductHero extends Component {
     }
   }
 
-  addItemToCart = ()  => {
+  toggleImage = (key) => {
+    this.setState({
+      currentImage: key
+    })
+  }
+
+  addItemToCart = () => {
     const { addItemToCart, product, cartItems, updateItemInCart } = this.props;
     const { quantity, color, size } = this.state;
     const attribute = [size, color].toString()
-    const id =  product.product_id
+    const id = product.product_id
     const item = {
       id: id,
       quantity,
@@ -63,15 +70,14 @@ class ProductHero extends Component {
       product: product
     }
     const activeEntry = _find(cartItems, { id });
-    if(activeEntry) {
+    if (activeEntry) {
       return updateItemInCart(activeEntry, quantity)
     }
     return addItemToCart(item)
   }
   render() {
-    const { quantity } = this.state;
+    const { quantity, currentImage } = this.state;
     const { product, attributes } = this.props;
-
     let colorAttributes = []
     let sizeAttributes = [];
     attributes && attributes.filter((attribute) => {
@@ -87,7 +93,18 @@ class ProductHero extends Component {
           <div className="product-wrapper">
             <div className="row">
               <div className="col-6">
-                <img src={`${imageDirectory}${product.thumbnail}`} />
+                <img src={`${imageDirectory}${currentImage === 1 ? product.thumbnail : product.image_2}`} />
+
+                <div className="row image-thumbnails">
+                  <div className="image__box">
+                    <div className="instagram__box" style={{ backgroundImage: `url(${`${imageDirectory}${product.image}`})` }} onClick={() => this.toggleImage(1)}>
+                    </div>
+                  </div>
+                  <div className="image__box">
+                    <div className="instagram__box" style={{ backgroundImage: `url(${`${imageDirectory}${product.image_2}`})` }} onClick={() => this.toggleImage(2)}>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="col-6">
                 <h1 className="name">{product.name}</h1>
@@ -125,7 +142,7 @@ const mapDispatchToProps = (dispatch) => {
   return ({
     getAllAttributes: (productId) => dispatch({ type: 'GET_PRODUCT_ATTRIBUTES', productId }),
     addItemToCart: (item) => dispatch({ type: 'ADD_ITEM_TO_CART', item }),
-    updateItemInCart: (activeEntry, quantity) => dispatch({type: 'INCREMENT_CART_ITEM_QUANTITY', activeEntry, quantity })
+    updateItemInCart: (activeEntry, quantity) => dispatch({ type: 'INCREMENT_CART_ITEM_QUANTITY', activeEntry, quantity })
   });
 }
 

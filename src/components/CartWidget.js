@@ -16,13 +16,13 @@ const CartWidget = ({
       </div>
 
       <div className="cart__cta">
-        <Link to="/checkout">
+        {/* <Link to="/checkout">
           <Button
             text="CHECKOUT"
             onClick={() => true}
           >  
           </Button>
-        </Link>
+        </Link> */}
       </div>
     </div>
   </div>
