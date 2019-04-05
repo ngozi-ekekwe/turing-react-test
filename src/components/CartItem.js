@@ -1,61 +1,53 @@
 import React from 'react';
-// import ProductBottle from '../template/ProductBottle';
 import ProductQuantityBox from './ProductQuantityBox';
+const imageDirectory = process.env.IMAGE_DIRECTORY;
 
 const CartItem = ({
   item, increasseQuantityOnClick, decreasseQuantityOnClick,
   calculateItemTotal, removeItemFromCart, previous,
-}) => (
-  <div className="cart__item">
-    <div className="d-flex">
-      {/* <ProductBottle item={item} /> */}
-      <div className="cart__item--details">
-        <p>
-          {item.name}
-        </p>
-        <h4 className="text-uppercase pb-3 pt-1">
-          {item.functionalityText}
-        </h4>
+}) => {
+  const attribute = item && item.attributes.split(",");
+  const color = attribute[1]
+  const size = attribute[0]
+  return (
+    <div className="cart__item">
+      <div className="d-flex justify-content-between">
+        <img src={`${imageDirectory}${item.product.thumbnail}`} />
+        <div className="cart__item--details">
+          <h3 className="mb-3">
+            {item.product.name.toUpperCase()}
+          </h3>
+          <ProductQuantityBox
+            previous={previous}
+            quantity={item.quantity}
+            increaseQuantity={increasseQuantityOnClick}
+            reduceQuantity={decreasseQuantityOnClick}
+            classname="cart"
+          />
+          {!previous && (
+            <button className="remove__button" type="submit" onClick={removeItemFromCart}>
+              Remove
+            </button>
+          )}
+        </div>
+        <div className="pl-2">
+          <p className="mb-3">SIZE</p>
+          <h4 className="text-uppercase pb-3 pt-1">
+            {size}
+          </h4>
+        </div>
+        <div className="pl-2">
+          <p className="mb-3">COLOR</p>
+          <button className={`color color-${color.toLowerCase()}`}></button>
+        </div>
 
-        <ProductQuantityBox
-          previous={previous}
-          quantity={item.quantity}
-          increaseQuantity={increasseQuantityOnClick}
-          reduceQuantity={decreasseQuantityOnClick}
-          classname="cart"
-        />
-        {!previous && (
-          <button className="btn remove__button" type="submit" onClick={removeItemFromCart}>
-            Remove
-          </button>
-        )}
+        <div className="pl-2">
+          <p className="mb-3">PRICE</p>
+          ${item.product.price}
+        </div>
       </div>
     </div>
-    <div className="cart__purchase">
-      { item.checkOutChoice !== 'oneTime' && item.has_vip_pricing
-        ? (
-          <div>
-            <div className="cart__purchase-discount-price">
-              <s>
-                {`$${parseFloat(item.regularPrice * item.quantity).toFixed(2)}`}
-              </s>
-            </div>
-            <p className="cart__purchase-VIP-price">
-              {`$${parseFloat(calculateItemTotal).toFixed(2)} VIP `}
-            </p>
-          </div>
-        )
-        : (
-          <p className="cart__purchase-price">
-            {`$${parseFloat(calculateItemTotal).toFixed(2)} `}
-          </p>
-        )
-      }
-      <p className="cart__purchase-type">
-        {`${item.checkOutChoice === 'vip' ? 'VIP' : 'One Time'} Purchase`}
-      </p>
-    </div>
-  </div>
-);
+  );
+}
 
 export default CartItem;

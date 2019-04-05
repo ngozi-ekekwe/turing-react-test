@@ -77,20 +77,14 @@ class CartListing extends Component {
     return (
       <NoSSR>
         <div>
+          <p className="number-cart-items">{`You have ${cart.length} item${cart.length > 1 ? 's' : ''} in your cart`}</p>
           <div className="cart__list-wrapper">
             { cart && this.renderCartItems(cart, previous) }
           </div>
           <div className="cart__footer">
-            <p className="cart__footer--discount-text cart-col">
-              Have a discount code?
-              Mention it over text.
-            </p>
             <div className="cart-col">
               <p className="cart__footer--total-price">
                 {/* {`Total $${parseFloat(this.calculateCartTotal(cart, previous)).toFixed(2)}`} */}
-              </p>
-              <p className="cart__footer--tax">
-              + tax, where applicable
               </p>
             </div>
           </div>
@@ -101,7 +95,7 @@ class CartListing extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  cart: []
+  cart: state.cart.cartItems
 });
 
 export default connect(mapStateToProps, null)(CartListing);

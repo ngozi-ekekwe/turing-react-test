@@ -7,7 +7,6 @@ import { getProductAttributeSuccess, getProductAttributeFailure } from '../actio
 export function* getProductAttributesSaga(productId) {
   try {
     const attributes = yield call(getProductAttributes, productId);
-    console.log(attributes)
     yield put(getProductAttributeSuccess(attributes))
   }catch(err) {
     yield put(getProductAttributeFailure(err))

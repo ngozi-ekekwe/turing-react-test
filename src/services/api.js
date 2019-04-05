@@ -46,7 +46,6 @@ export function getCategories() {
 }
 
 export function getAllProducts(page = 1) {
-  console.log(page, 'page in API')
   const path = `products?page=${page}`;
   return apiGetRequest(path);
 }

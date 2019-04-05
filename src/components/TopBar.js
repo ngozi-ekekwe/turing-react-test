@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from '../routes';
 import AuthModal from './Modal';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
@@ -62,6 +63,7 @@ class TopBar extends Component {
   }
   render() {
     const { show, form, title, type, toggleCartWidget} = this.state
+    const { cart  } = this.props;
     return (
       <div className={`top-bar ${type}`}>
         <AuthModal show={show} handleClose={this.handleClose} form={form} title={title}  />
@@ -96,7 +98,7 @@ class TopBar extends Component {
                 <div className="col-8 d-flex align-center">
                   <div className="d-flex shopping-cart" onClick={this.toggleCartWidgetHandler}>
                     <img src="/static/black.png" />
-                    <div className="cart-badge">0</div>
+                    <div className="cart-badge">{cart}</div>
                   </div>
                   <p className="pl-3">Your bag: $16.00</p>
                 </div>
@@ -109,4 +111,10 @@ class TopBar extends Component {
   }
 }
 
-export default TopBar;
+function mapStateToProps(state, props) {
+  return {
+    cart: state.cart.cartItems.length
+  };
+}
+
+export default connect(mapStateToProps, null)(TopBar);

@@ -18,10 +18,9 @@ const CartWidget = ({
       <div className="cart__cta">
         <Link to="/checkout">
           <Button
-            classname="bg-color--yellow"
+            text="CHECKOUT"
             onClick={() => true}
-          >
-            CHECKOUT
+          >  
           </Button>
         </Link>
       </div>

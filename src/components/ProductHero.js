@@ -1,21 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { find as _find } from 'lodash';
 import Button from './Button';
 import ProductQuantityBox from './ProductQuantityBox';
 import ProductAtrributes from './ProductAtrributes';
-const imageDirectory = process.env.IMAGE_DIRECTORY
+const imageDirectory = process.env.IMAGE_DIRECTORY;
+
+
 
 class ProductHero extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      quantity: 1
+      name: null,
+      color: null,
+      size: null,
+      price: '',
+      quantity: 1,
+      subtotal: ''
     }
   }
 
   componentDidMount() {
     const { slug, getAllAttributes } = this.props;
     getAllAttributes(slug)
+  }
+
+  onSelectAttribute = (attribute, type) => {
+    switch(type) {
+      case 'color': return this.setState({ color: attribute})
+      case 'size': return this.setState({size: attribute})
+      default: return ''
+    }
   }
 
   increaseQuantity = () => {
@@ -35,8 +51,22 @@ class ProductHero extends Component {
     }
   }
 
-  addItemToCart() {
-
+  addItemToCart = ()  => {
+    const { addItemToCart, product, cartItems, updateItemInCart } = this.props;
+    const { quantity, color, size } = this.state;
+    const attribute = [size, color].toString()
+    const id =  product.product_id
+    const item = {
+      id: id,
+      quantity,
+      attributes: attribute,
+      product: product
+    }
+    const activeEntry = _find(cartItems, { id });
+    if(activeEntry) {
+      return updateItemInCart(activeEntry, quantity)
+    }
+    return addItemToCart(item)
   }
   render() {
     const { quantity } = this.state;
@@ -69,11 +99,11 @@ class ProductHero extends Component {
                 <h3 className="mt-3 mb-3">PRODUCT DETAILS</h3>
                 <p className="product-description mb-3">{product.description}</p>
 
-                {attributes && <ProductAtrributes sizeAttributes={sizeAttributes} colorAttributes={colorAttributes} attributes={attributes} />}
-                {<ProductAtrributes attributes={attributes} />}
+                {attributes && <ProductAtrributes sizeAttributes={sizeAttributes} colorAttributes={colorAttributes} attributes={attributes} onSelectAttribute={this.onSelectAttribute} />}
+
                 <ProductQuantityBox quantity={quantity} increaseQuantity={this.increaseQuantity} reduceQuantity={this.reduceQuantity} />
                 <div className="mt-5">
-                  <Button text="ADD TO CART" />
+                  <Button text="ADD TO CART" onClick={this.addItemToCart} />
                 </div>
               </div>
             </div>
@@ -86,13 +116,16 @@ class ProductHero extends Component {
 
 function mapStateToProps(state, props) {
   return {
-    attributes: state.attribute.attributes
+    attributes: state.attribute.attributes,
+    cartItems: state.cart.cartItems
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return ({
-    getAllAttributes: (productId) => dispatch({ type: 'GET_PRODUCT_ATTRIBUTES', productId })
+    getAllAttributes: (productId) => dispatch({ type: 'GET_PRODUCT_ATTRIBUTES', productId }),
+    addItemToCart: (item) => dispatch({ type: 'ADD_ITEM_TO_CART', item }),
+    updateItemInCart: (activeEntry, quantity) => dispatch({type: 'INCREMENT_CART_ITEM_QUANTITY', activeEntry, quantity })
   });
 }
 
