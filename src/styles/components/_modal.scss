@@ -1,0 +1,23 @@
+.modal-content {
+  width: 380px;
+  height: 480px;
+  box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+}
+
+.modal-header {
+  border-bottom: 0;
+}
+
+.modal-header .close {
+  border: 0;
+  cursor: pointer;
+}
+
+.auth-header {
+  text-align: center;
+  font-family: $font-montserrat;
+  color: $color-black;
+  font-size: $fontSize-meduim;
+  margin-bottom: 2rem;
+}

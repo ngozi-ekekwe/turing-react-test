@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { Link } from '../routes';
 
 class Header extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+  }
 
   componentDidMount() {
     this.props.getAllDepartments();

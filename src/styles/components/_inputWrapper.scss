@@ -2,7 +2,7 @@
   border: 1px solid #f7f5ef;
   input, select, form {
     width: 100%;
-    height: unset !important;
+    height: 100%;
     border: unset;
     padding: 12px 12px;
     color: black;
@@ -31,12 +31,15 @@
 }
 
 .input-wrapper + .input-wrapper {
-  margin-top: 1rem;
+  margin-top: 12px;
 }
 
 .react-input-wrapper {
   border: 1px solid #f7f5ef;
   background-color: white;
-  max-height: 57px;
+  height: 60px;
   margin: 0 auto;
+  border-radius: 6px;
+  border: solid 1px #e1e1e1;
+  background-color: #ffffff;
 }
