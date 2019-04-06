@@ -5,7 +5,7 @@ import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import { withBodyScroll, withNProgress } from '../lib/routerEvents';
 
-import createStore from '../redux/store';
+import configureStore from '../redux/store';
 import '../styles/styles.scss';
 
 import { isAuthenticated } from '../redux/actions/auth'
@@ -24,7 +24,6 @@ class MyApp extends App {
   render() {
     
     const { Component, pageProps, store } = this.props
-    console.log(store.getState())
     let authenticated = false;
     if (process.browser) {
       const token = localStorage.getItem('user-key');
@@ -43,7 +42,7 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(createStore)(
+export default withRedux(configureStore)(
   withNProgress()(
     withBodyScroll(MyApp),
   ),

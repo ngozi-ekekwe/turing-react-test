@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+import { omit as _omit } from 'lodash';
 
 import rootReducer from './reducers/index'
 import initialState from './initialState'
@@ -13,16 +14,47 @@ const bindMiddleware = middleware => {
   return applyMiddleware(...middleware)
 }
 
-function configureStore (initialState) {
+// saves state to local storage
+
+function saveToLocalStorage(state = {}) {
+  try {
+    const data = JSON.stringify(_omit(state, ['department', 'category', 'product', 'attribute',  ]));
+    const serializedData = btoa(`turing:${data}`);
+    localStorage.setItem('state', serializedData);
+  } catch (e) {}
+}
+
+// loads state from local storage
+function loadFromLocalStorage() {
+  try {
+    const serializedState = localStorage.getItem('state');
+    if (serializedState === null) {
+      return undefined;
+    }
+    const state = atob(serializedState).replace(/^turing:/, '');
+    
+    return JSON.parse(state);
+  } catch (e) {
+    try { localStorage.removeItem('state'); } catch (err) {}
+    return undefined;
+  }
+}
+
+const persistedState = loadFromLocalStorage();
+
+function configureStore (preloadedState) {
   const sagaMiddleware = createSagaMiddleware()
   const store = createStore(
     rootReducer,
-    initialState,
+    { ...preloadedState, ...persistedState },
     bindMiddleware([sagaMiddleware])
   )
 
-  store.sagaTask = sagaMiddleware.run(rootSaga)
+  store.subscribe(() => {
+    saveToLocalStorage(store.getState());
+  });
 
+  store.sagaTask = sagaMiddleware.run(rootSaga)
   return store
 }
 

@@ -9,7 +9,7 @@ const Pagination = ({ productCount, setPage }) => {
   }
   for (let number = 1; number <= pages; number++) {
     items.push(
-      <li className="page-item"><a className="page-link" onClick={() => setPage(number)}>
+      <li key={number} className="page-item"><a className="page-link" onClick={() => setPage(number)}>
         {number}
       </a></li>
     );

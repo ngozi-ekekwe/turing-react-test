@@ -63,7 +63,7 @@ class Header extends Component {
               <div className="search-icon" onClick={() => searchProduct(search_term)}>
                 <img src="/static/black.png"/>
               </div>
-              <input name="search" defaultValue={search_term} type="text" class="form-control" placeholder="Search" autocomplete="off" onChange={this.onSearchChange} />
+              <input name="search" defaultValue={search_term} type="text" className="form-control" placeholder="Search" autoComplete="off" onChange={this.onSearchChange} />
 
               {searchResults.length > 1 &&<div className="search-results">
                 {/* <div class="txt-align mt-5">
