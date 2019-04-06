@@ -12,7 +12,8 @@ class AuthModal extends React.Component {
     return (
       <>
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
+          <Modal.Header >
+            <img src="/static/close.png" onClick={handleClose} />
           </Modal.Header>
           <Modal.Body>
             <div>

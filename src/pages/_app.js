@@ -25,6 +25,8 @@ class MyApp extends App {
     
     const { Component, pageProps, store } = this.props
     let authenticated = false;
+
+    console.log(store.getState())
     if (process.browser) {
       const token = localStorage.getItem('user-key');
       const { dispatch } = store

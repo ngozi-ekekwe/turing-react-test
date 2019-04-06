@@ -1,11 +1,17 @@
 .modal-content {
-  min-height: 480px;
+  min-height: 450px;
   box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3);
   background-color: #ffffff;
 }
 
 .modal-header {
   border-bottom: 0;
+  justify-content: flex-end;
+
+  img {
+    cursor: pointer;
+    height: 14px;
+  }
 }
 
 .modal-header .close {

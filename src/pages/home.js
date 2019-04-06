@@ -5,6 +5,7 @@ import ProductLayout from '../layouts/ProductLayout';
 import LandingPage from '../components/LandingPage'
 import { getAllCategories } from '../selectors/categories';
 import { getAllProducts } from '../selectors/products';
+import Loader from '../components/Loader';
 
 class Home extends Component {
 
@@ -12,6 +13,10 @@ class Home extends Component {
     this.props.getAllDepartments()
     this.props.getAllCategoies()
     this.props.getAllProducts()
+  }
+
+  componentWillMount() {
+    this.props.resetFilter()
   }
 
   setPage = (page) => {
@@ -24,6 +29,7 @@ class Home extends Component {
     return (
       <DefaultLayout>
         <LandingPage />
+        {products.length <= 0 && <Loader />}
         <ProductLayout 
           categories={categories} 
           products={products.rows} 
@@ -48,7 +54,8 @@ const mapDispatchToProps = (dispatch) => {
     getAllDepartments: () => dispatch({ type: 'GET_ALL_DEPARTMENTS' }),
     getAllCategoies: () => dispatch({ type: 'GET_ALL_CATEGORIES' }),
     getAllProducts: () => dispatch({ type: 'GET_ALL_PRODUCTS' }),
-    setProductPage: (page) => dispatch({type: 'SET_PAGE',  page})
+    setProductPage: (page) => dispatch({type: 'SET_PAGE',  page}),
+    resetFilter: () => dispatch({type: 'RESET_FILTER'})
   });
 }
 
