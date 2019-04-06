@@ -1,7 +1,7 @@
 import { put, take, call } from 'redux-saga/effects';
 
-import { getAllProducts } from '../../services/api';
-import { getAllProductsSuccess, getAllProductsFailure } from '../actions/products';
+import { getAllProducts, productSearch } from '../../services/api';
+import { getAllProductsSuccess, getAllProductsFailure, searchProductSuccess, searchProductFailure } from '../actions/products';
 
 
 export function* getProducts(page) {
@@ -10,6 +10,22 @@ export function* getProducts(page) {
     yield put(getAllProductsSuccess(products))
   }catch(err) {
     yield put(getAllProductsFailure(err))
+  }
+}
+
+export function* searchProducts(term) {
+  try{
+    const products = yield call(productSearch, term)
+    yield put(searchProductSuccess(products))
+  }catch(err) {
+    yield put(searchProductFailure(error))
+  }
+}
+
+export function* watchSearchProducts() {
+  while(true) {
+    const action = yield take('SEARCH_PRODUCT');
+    yield call(searchProducts, action.term);
   }
 }
 

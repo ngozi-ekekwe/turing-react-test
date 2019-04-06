@@ -33,7 +33,7 @@
 .top-bar-auth button {
   color: $color-pink;
   font-family: $font-montserrat;
-  font-size: $fontSize-tiny;
+  font-size: $fontSize-small;
 }
 
 .cart-badge {
@@ -45,7 +45,7 @@
   font-family: $font-montserrat;
   font-weight: bold;
   display: flex;
-  font-size: $fontSize-tiny;
+  font-size: 11px;
   justify-content: center;
   align-items: center;
   position: absolute;

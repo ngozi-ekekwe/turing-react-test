@@ -7,6 +7,10 @@ class Header extends Component {
   constructor(props, context) {
     super(props, context);
 
+    this.state = {
+      search_term: null
+    }
+
   }
 
   componentDidMount() {
@@ -21,8 +25,15 @@ class Header extends Component {
     const token = localStorage.removeItem('token');
   }
 
+  onSearchChange = (e) => {
+    const term = e.target.value;
+    this.setState({
+      search_term: term
+    })
+  }
+
   render() {
-    const { departments } = this.props;
+    const { search_term, searchResults=[], departments, searchProduct } = this.props;
     return (
       <div className="header">
         <div className="container">
@@ -49,9 +60,24 @@ class Header extends Component {
               </div>
             </div>
             <div className="col-4">
-              <form>
-                <input name="search" type="text" class="form-control" placeholder="Search" autocomplete="off" />
-              </form>
+              <div className="search-icon" onClick={() => searchProduct(search_term)}>
+                <img src="/static/black.png"/>
+              </div>
+              <input name="search" defaultValue={search_term} type="text" class="form-control" placeholder="Search" autocomplete="off" onChange={this.onSearchChange} />
+
+              {searchResults.length > 1 &&<div className="search-results">
+                {/* <div class="txt-align mt-5">
+                  <div className="spinner-grow text-primary" role="status">
+                  </div>
+                </div> */}
+                {searchResults && searchResults.map((product) => {
+                  return (
+                    <div className="search-item">
+                      <Link to={`/product/${product.product_id}`}><a href={`/product/${product.product_id}`}>{product.name}</a></Link>
+                    </div>
+                  )
+                })}
+              </div>}
             </div>
           </div>
         </div>
@@ -62,7 +88,8 @@ class Header extends Component {
 
 function mapStateToProps(state, props) {
   return {
-    departments: state.department.departments
+    departments: state.department.departments,
+    searchResults: state.product.searchResults.rows
   };
 }
 
@@ -71,6 +98,9 @@ const mapDispatchToProps = (dispatch) => {
     getAllDepartments: () => dispatch({ type: 'GET_ALL_DEPARTMENTS' }),
     onDepartmentChange: (departmentId) => {
       return dispatch({ type: 'SET_CURRENT_DEPARTMENT', departmentId })
+    },
+    searchProduct: (term) => {
+      return dispatch({ type: 'SEARCH_PRODUCT', term })
     }
   });
 }

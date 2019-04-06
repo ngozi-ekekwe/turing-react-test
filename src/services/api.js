@@ -84,3 +84,8 @@ export function getProductAttributes(productId) {
   const path = `attributes/inProduct/${productId}`;
   return  apiGetRequest(path);
 }
+
+export function productSearch(query_string) {
+  const path = `products/search?query_string=${query_string}`
+  return apiGetRequest(path);
+}

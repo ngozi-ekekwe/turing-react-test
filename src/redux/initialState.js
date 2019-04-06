@@ -11,7 +11,8 @@ export default {
   product: {
     products: [],
     error: null,
-    page: 1
+    page: 1,
+    searchResults: []
   },
   customer: {
     customer: {},
