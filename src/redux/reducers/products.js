@@ -3,7 +3,8 @@ import { GET_ALL_PRODUCTS,
   GET_ALL_PRODUCTS_FAILURE,
   SET_PAGE,
   SEARCH_PRODUCT_SUCCESS,
-  SEARCH_PRODUCT_FAILURE } from '../actionTypes';
+  SEARCH_PRODUCT_FAILURE,
+  RESET_SEARCH } from '../actionTypes';
 import initialState from '../initialState';
 import update from "immutability-helper";
 
@@ -34,6 +35,12 @@ export default function product (state = initialState.product, action) {
         ...state,
         error: action.error
       }
+    }
+
+    case RESET_SEARCH: {
+      return update(state, {
+        searchResults: {$set: []}
+      })
     }
 
     case SET_PAGE: {

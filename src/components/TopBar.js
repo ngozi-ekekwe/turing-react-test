@@ -8,6 +8,7 @@ import RegisterForm from './Register';
 
 import LoginForm from './LoginForm';
 import CartWidget from './CartWidget';
+import { ToastContainer, toast } from "react-toastify";
 
 class TopBar extends Component {
   constructor(props, context) {
@@ -66,6 +67,7 @@ class TopBar extends Component {
     const { cart  } = this.props;
     return (
       <div className={`top-bar ${type}`}>
+      <ToastContainer /> 
         <AuthModal show={show} handleClose={this.handleClose} form={form} title={title}  />
         <CartWidget
             toggleCartWidgetHandler={this.toggleCartWidgetHandler}

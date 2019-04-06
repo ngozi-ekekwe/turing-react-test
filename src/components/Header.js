@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CartWidget from './CartWidget';
 import { Link } from '../routes';
+import { ToastContainer } from "react-toastify";
 
+import Loader from './Loader';
 class Header extends Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      search_term: null
+      search_term: null,
+      search_started: false
     }
 
   }
@@ -26,14 +29,25 @@ class Header extends Component {
   }
 
   onSearchChange = (e) => {
-    const term = e.target.value;
+    const term = e.target.value
+    if (term.length > 3) {
+      this.setState({
+        search_started: true
+      })
+      this.props.searchProduct(term)
+    }
+  }
+
+  clear = () => {
     this.setState({
-      search_term: term
+      search_started: false,
+      search_term: ''
     })
   }
 
   render() {
-    const { search_term, searchResults=[], departments, searchProduct } = this.props;
+    const { search_term, searchResults = [], departments, searchProduct } = this.props;
+    const { search_started } = this.state;
     return (
       <div className="header">
         <div className="container">
@@ -60,23 +74,20 @@ class Header extends Component {
               </div>
             </div>
             <div className="col-4">
-              <div className="search-icon" onClick={() => searchProduct(search_term)}>
-                <img src="/static/black.png"/>
-              </div>
+              {<div className="search-icon" onClick={() => this.clear()}>
+                <img src="/static/close.png" />
+              </div>}
               <input name="search" defaultValue={search_term} type="text" className="form-control" placeholder="Search" autoComplete="off" onChange={this.onSearchChange} />
 
-              {searchResults.length > 1 &&<div className="search-results">
-                {/* <div class="txt-align mt-5">
-                  <div className="spinner-grow text-primary" role="status">
-                  </div>
-                </div> */}
-                {searchResults && searchResults.map((product) => {
-                  return (
-                    <div className="search-item">
+              {search_started && <div className="search-results">
+                {searchResults.length === 0 &&<Loader />}
+                  {searchResults.length >= 1 && searchResults.map((product) => {
+                    return (
+                      <div className="search-item">
                       <Link to={`/product/${product.product_id}`}><a href={`/product/${product.product_id}`}>{product.name}</a></Link>
-                    </div>
-                  )
-                })}
+                      </div>
+                    )
+                  })}
               </div>}
             </div>
           </div>
@@ -101,7 +112,8 @@ const mapDispatchToProps = (dispatch) => {
     },
     searchProduct: (term) => {
       return dispatch({ type: 'SEARCH_PRODUCT', term })
-    }
+    },
+    resetSearch: () => ({ type: 'RESET_SEARCH' })
   });
 }
 
