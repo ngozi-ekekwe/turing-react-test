@@ -62,3 +62,46 @@ img {
 .shopping-cart {
   cursor: pointer;
 }
+
+.has-error {
+  color: red;
+  font-family: $font-montserrat;
+  font-size: $fontSize-small;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.top-bar  button {
+  border: 0;
+  min-width: 0;
+  border-radius: 0;
+  height: unset;
+  background-color: initial;
+  color: $color-black;
+  font-weight: bold;
+  font-size: $fontSize-small;
+  font-family: $font-montserrat;
+}
+
+.search-button {
+  height: 100%;
+  background-color: $color-pink;
+  color: $color-white;
+  border: 0;
+  font-size: $fontSize-tiny;
+  font-family: $font-montserrat;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dropdown-basic a {
+  font-family: $font-montserrat;
+  margin-bottom: 2rem;
+}
+
+.dropdown-button {
+  font-family: $font-montserrat;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 100;
+}

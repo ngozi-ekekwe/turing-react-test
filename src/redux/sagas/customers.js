@@ -1,10 +1,9 @@
 import { put, take, call } from 'redux-saga/effects';
 
 import { createCustomer, loginCustomer } from '../../services/api';
-import { createCustomerSuccess, createCustomerFailure } from '../actions/customers';
-
-import { ToastContainer, toast } from "react-toastify";
-
+import { createCustomerSuccess, createCustomerFailure } from 
+'../actions/customers';
+import Router from 'next/router';
 
 export function* createCustomerSaga(customer) {
   try {
@@ -25,18 +24,13 @@ export function* loginCustomerSaga(customer) {
     if(response.accessToken) {
       localStorage.setItem('user-key', response.accessToken)
       yield put(createCustomerSuccess(response.user))
-    }
-    if(response.error.message) {
-      toast(response.error.message)
-      yield put(createCustomerFailure(response))
+      Router.push('/')
     }
     else {
-      toast(response.error)
+      yield put(createCustomerFailure(response))
     }
-   
-    yield put(createCustomerFailure(err))
   }catch(err) {
-
+    yield put(createCustomerFailure(err))
   }
 }
 

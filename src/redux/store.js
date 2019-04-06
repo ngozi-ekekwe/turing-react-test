@@ -18,7 +18,7 @@ const bindMiddleware = middleware => {
 
 function saveToLocalStorage(state = {}) {
   try {
-    const data = JSON.stringify(_omit(state, ['department', 'category', 'product', 'attribute',  ]));
+    const data = JSON.stringify(_omit(state, ['department', 'category', 'product', 'attribute'  ]));
     const serializedData = btoa(`turing:${data}`);
     localStorage.setItem('state', serializedData);
   } catch (e) {}

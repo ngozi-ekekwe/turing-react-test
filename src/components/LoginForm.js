@@ -24,24 +24,28 @@ class Login extends Component {
   onClick = () => {
     this.setState({ loading: true })
     const { loginCustomer } = this.props;
-    return loginCustomer(this.state)
+    loginCustomer(this.state)
   }
 
+
   render() {
+    const { error, customer} = this.props;
+    const { loading } = this.state;
     return (
       <div className="container">
+        {error && error.error &&<p className="has-error">{ error && error.error.message}</p>}
         <div>
           {
-            loginFields.map((field) => {
+            loginFields.map((field, i) => {
               return (
-                <InputWrapper>
+                <InputWrapper key={i}>
                   <input placeholder={field.placeHolder} type={field.type} onChange={this.onChange} name={field.name} />
                 </InputWrapper>
               )
             })
           }
           <div className="mt-4 txt-align">
-            <Button text="SIGN IN" onClick={this.onClick} />
+            <Button text="SIGN IN" onClick={this.onClick} loading={loading } />
           </div>
         </div>
       </div>
@@ -50,7 +54,10 @@ class Login extends Component {
 }
 
 function mapStateToProps(state, props) {
-
+  return {
+    customer: state.customer.customer,
+    error: state.customer.error
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -59,4 +66,4 @@ const mapDispatchToProps = (dispatch) => {
   });
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

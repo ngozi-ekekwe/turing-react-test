@@ -8,7 +8,7 @@
 @import '~bootstrap/scss/_pagination.scss';
 @import '~bootstrap/scss/_modal.scss';
 @import '~bootstrap/scss/_spinners.scss';
-@import './_app.scss';
+@import '~bootstrap/scss/_dropdown.scss';
 @import './components/_header.scss';
 @import './components/_topBar.scss';
 @import './layouts/_product.scss';
@@ -19,3 +19,4 @@
 @import './components/_attributes.scss';
 @import './components/_modal.scss';
 @import './components/_sidebar.scss';
+@import './_app.scss';

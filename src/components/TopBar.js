@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
+import Router from 'next/router';
 import { connect } from 'react-redux';
 import { Link } from '../routes';
 import AuthModal from './Modal';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { Dropdown } from 'react-bootstrap';
 
 import RegisterForm from './Register';
 
 import LoginForm from './LoginForm';
 import CartWidget from './CartWidget';
 import { ToastContainer, toast } from "react-toastify";
+import { logoutCustomer } from '../redux/actions/customers';
 
 class TopBar extends Component {
   constructor(props, context) {
@@ -43,8 +46,13 @@ class TopBar extends Component {
     this.setState({ show: false });
   }
 
+  logout = () => {
+    localStorage.removeItem('user-key');
+    return this.props.logout()
+  }
+
   handleShow = (form) => {
-    switch(form) {
+    switch (form) {
       case 'register': {
         return this.setState({ show: true, form: <RegisterForm />, title: "Sign Up", type: null });
       }
@@ -54,7 +62,7 @@ class TopBar extends Component {
       }
 
       case 'openCart': {
-        return this.setState({ show: true, form: 'hello', title: null, type: 'cart'})
+        return this.setState({ show: true, form: 'hello', title: null, type: 'cart' })
       }
 
       default: {
@@ -63,29 +71,45 @@ class TopBar extends Component {
     }
   }
   render() {
-    const { show, form, title, type, toggleCartWidget} = this.state
-    const { cart  } = this.props;
+    const { show, form, title, type, toggleCartWidget } = this.state
+    const { cart, customer } = this.props;
     return (
       <div className={`top-bar ${type}`}>
-      <ToastContainer /> 
-        <AuthModal show={show} handleClose={this.handleClose} form={form} title={title}  />
+        <ToastContainer />
+        <AuthModal show={show} handleClose={this.handleClose} form={form} title={title} />
         <CartWidget
-            toggleCartWidgetHandler={this.toggleCartWidgetHandler}
-            toggleCartWidget={toggleCartWidget}
-          />
+          toggleCartWidgetHandler={this.toggleCartWidgetHandler}
+          toggleCartWidget={toggleCartWidget}
+        />
         <div className="container">
           <div className="row">
             <div className="col-4">
-              <div className="top-bar-auth">
+              {!customer.customer_id && <div className="top-bar-auth">
                 <p>Hi!
                     <span>
-                    <button onClick={ () =>this.handleShow('register')}>sign in</button>
+                    <button onClick={() => this.handleShow('register')}>sign in</button>
                   </span> or
                     <span>
-                    <button onClick={() =>this.handleShow('login')}>login</button>
+                    <button onClick={() => this.handleShow('login')}>login</button>
                   </span>
                 </p>
-              </div>
+              </div>}
+              {
+                customer.customer_id &&
+                <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Hello! {customer.name}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <div className="txt-align">
+                      <button className="dropdown-button" onClick={() =>Router.push('/account')}>My Account</button>
+                    </div>
+                    <div className="txt-align">
+                    <button className="dropdown-button" onClick={this.logout}>Logout</button>
+                    </div>
+                  </Dropdown.Menu>
+                </Dropdown>
+              }
             </div>
             <div className="col-4">
               <ul className="">
@@ -115,8 +139,15 @@ class TopBar extends Component {
 
 function mapStateToProps(state, props) {
   return {
-    cart: state.cart.cartItems.length
+    cart: state.cart.cartItems.length,
+    customer: state.customer.customer
   };
 }
 
-export default connect(mapStateToProps, null)(TopBar);
+function mapDispatchToProps(dispatch) {
+  return {
+    logout: () => dispatch(logoutCustomer())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopBar);

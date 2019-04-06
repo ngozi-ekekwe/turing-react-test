@@ -4,7 +4,9 @@ import {
   CREATE_CUSTOMER_SUCCESS,
 
   LOGIN_CUSTOMER_SUCCESS,
-  LOGIN_CUSTOMER_FAILURE
+  LOGIN_CUSTOMER_FAILURE,
+
+  LOGOUT_CUSTOMER
 
  } from '../actionTypes';
 import initialState from '../initialState';
@@ -27,7 +29,8 @@ export default function customer (state = initialState.customer, action) {
 
     case LOGIN_CUSTOMER_SUCCESS: {
       return update(state, {
-        customer: { $set: action.customer}
+        customer: { $set: action.customer},
+        error: { $set: []}
       });
     }
 
@@ -36,6 +39,13 @@ export default function customer (state = initialState.customer, action) {
         ...state,
         error: action.error
       }
+    }
+
+    case LOGOUT_CUSTOMER: {
+      return update(state, {
+        customer: { $set: {}},
+        error: { $set: []}
+      });
     }
     default:
       return state

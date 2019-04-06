@@ -1,10 +1,22 @@
-import React from 'react';
+import React ,{ Fragment}  from 'react';
+import Loader from './Loader';
 
-const Button = ({text, onClick}) => {
+const Button = ({text, onClick, loading}) => {
   return (
-    <button className="btn" onClick={onClick}>
-      {text}
-    </button>
+    <Fragment>
+      { !loading &&
+        <button className="btn" onClick={onClick}>
+        {text}
+      </button>
+      }
+
+      {
+        loading &&
+        <Loader />
+      }
+    </Fragment>
+    
+    
   );
 };
 

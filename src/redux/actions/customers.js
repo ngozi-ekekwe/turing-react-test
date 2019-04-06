@@ -6,7 +6,9 @@ import {
 
   LOGIN_CUSTOMER,
   LOGIN_CUSTOMER_SUCCESS,
-  LOGIN_CUSTOMER_FAILURE
+  LOGIN_CUSTOMER_FAILURE,
+
+  LOGOUT_CUSTOMER
 } from '../actionTypes';
 
 export function createCustomer(customer) {
@@ -48,5 +50,11 @@ export function loginCustomerFailure(error) {
   return {
     type: LOGIN_CUSTOMER_FAILURE,
     error
+  }
+}
+
+export function logoutCustomer() {
+  return {
+    type: LOGOUT_CUSTOMER,
   }
 }

@@ -30,19 +30,23 @@ class Header extends Component {
 
   onSearchChange = (e) => {
     const term = e.target.value
-    if (term.length > 3) {
+    if(term.length <= 0) {
       this.setState({
-        search_started: true
+        search_started: false
       })
-      this.props.searchProduct(term)
     }
+    this.setState({
+      search_term: term
+    })
+    
   }
 
-  clear = () => {
+  searchProduct = () => {
+    const { search_term } = this.state
     this.setState({
-      search_started: false,
-      search_term: ''
+      search_started: true
     })
+    return this.props.searchProduct(search_term)
   }
 
   render() {
@@ -74,20 +78,24 @@ class Header extends Component {
               </div>
             </div>
             <div className="col-4">
-              {<div className="search-icon" onClick={() => this.clear()}>
-                <img src="/static/close.png" />
-              </div>}
-              <input name="search" defaultValue={search_term} type="text" className="form-control" placeholder="Search" autoComplete="off" onChange={this.onSearchChange} />
+              <div className="row">
+                <div className="col-8">
+                  <input name="search" defaultValue={search_term} type="text" className="form-control" placeholder="Search" autoComplete="off" onChange={this.onSearchChange} />
+                </div>
+                <div className="col-2 p-0">
+                  <button className="search-button" onClick={this.searchProduct}>submit</button>
+                </div>
+              </div>
 
               {search_started && <div className="search-results">
-                {searchResults.length === 0 &&<Loader />}
-                  {searchResults.length >= 1 && searchResults.map((product) => {
-                    return (
-                      <div className="search-item">
+                {searchResults.length === 0 && <Loader />}
+                {searchResults.length >= 1 && searchResults.map((product) => {
+                  return (
+                    <div className="search-item">
                       <Link to={`/product/${product.product_id}`}><a href={`/product/${product.product_id}`}>{product.name}</a></Link>
-                      </div>
-                    )
-                  })}
+                    </div>
+                  )
+                })}
               </div>}
             </div>
           </div>
