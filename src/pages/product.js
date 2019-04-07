@@ -21,7 +21,6 @@ class Product extends Component {
       <TopBar />
       <ProductHeader  />
       <ProductHero product={product} slug={slug}/>
-      {productReviews && <ProductReviews reviews={productReviews} />}
     </Fragment>
     )
   }

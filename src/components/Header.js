@@ -54,8 +54,6 @@ class Header extends Component {
     const { search_term, searchResults = [], departments, searchProduct } = this.props;
     const { search_started } = this.state;
     const slug = this.props.router.query.slug;
-
-    console.log(this.props.router.query.slug)
     return (
       <div className="header">
         <div className="container">

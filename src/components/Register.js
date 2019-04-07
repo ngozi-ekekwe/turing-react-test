@@ -28,8 +28,11 @@ class Register extends Component {
     return createCustomer(this.state)
   }
   render() {
+    const { error, customer} = this.props;
+    const { loading } = this.state;
     return (
         <div className="container">
+         {error && error.error &&<p className="has-error">{ error && error.error.message}</p>}
             <div>
                 {
                   signupFields.map((field) => {
@@ -41,7 +44,7 @@ class Register extends Component {
                   })
                 }
                 <div className="mt-4 txt-align">
-                  <Button text="SIGN UP" onClick={this.onClick} />
+                  <Button text="SIGN UP" onClick={this.onClick} loading={loading && !error }/>
                 </div>
           </div>
         </div>
@@ -50,7 +53,10 @@ class Register extends Component {
 }
 
 function mapStateToProps(state, props) {
-
+  return {
+    customer: state.customer.customer,
+    error: state.customer.error
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

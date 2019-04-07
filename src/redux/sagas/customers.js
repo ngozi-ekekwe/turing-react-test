@@ -10,7 +10,8 @@ export function* createCustomerSaga(customer) {
     const response = yield call(createCustomer, customer);
     if(response.accessToken) {
       localStorage.setItem('user-key', response.accessToken)
-      yield put(createCustomerSuccess(response.user))
+      yield put(createCustomerSuccess(response.customer))
+      Router.push('/')
     }
     yield put(createCustomerFailure(response))
   }catch(err) {

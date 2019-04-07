@@ -109,8 +109,8 @@ class ProductHero extends Component {
               <div className="col-6">
                 <h1 className="name">{product.name}</h1>
                 <div className="d-flex">
-                  <p className={`price ${product.discounted_price ? 'strike' : ''}`}>${product.price}</p>
-                  <p className="price discount pl-3">${product.discounted_price}</p>
+                  <p className={`price ${product.discounted_price !== "0.00" ? 'strike' : ''}`}>${product.price}</p>
+                  { !product.discounted_price === "0.00" && <p className="price discount pl-3">${product.discounted_price}</p>}
                 </div>
 
                 <h3 className="mt-3 mb-3">PRODUCT DETAILS</h3>

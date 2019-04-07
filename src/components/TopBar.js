@@ -87,16 +87,17 @@ class TopBar extends Component {
               {!customer.customer_id && <div className="top-bar-auth">
                 <p>Hi!
                     <span>
-                    <button onClick={() => this.handleShow('register')}>sign in</button>
+                    <button className="top-bar-auth-btn" onClick={() => this.handleShow('register')}>sign in</button>
                   </span> or
                     <span>
-                    <button onClick={() => this.handleShow('login')}>login</button>
+                    <button className="top-bar-auth-btn" onClick={() => this.handleShow('login')}>login</button>
                   </span>
                 </p>
               </div>}
               {
                 customer.customer_id &&
-                <Dropdown>
+                <div className="dropdown-custom-button">
+                  <Dropdown>
                   <Dropdown.Toggle variant="success" id="dropdown-basic">
                     Hello! {customer.name}
                   </Dropdown.Toggle>
@@ -109,6 +110,7 @@ class TopBar extends Component {
                     </div>
                   </Dropdown.Menu>
                 </Dropdown>
+                </div>
               }
             </div>
             <div className="col-4">

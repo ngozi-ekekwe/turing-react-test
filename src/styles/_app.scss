@@ -79,13 +79,13 @@ img {
   margin-bottom: 1rem;
 }
 
-.top-bar  button {
+.top-bar .dropdown button {
   border: 0;
   min-width: 0;
   border-radius: 0;
-  height: unset;
-  background-color: initial;
-  color: $color-black;
+  height: unset !important;
+  background-color: white !important;
+  color: $color-black !important;
   font-weight: bold;
   font-size: $fontSize-small;
   font-family: $font-montserrat;
@@ -107,7 +107,7 @@ img {
   margin-bottom: 2rem;
 }
 
-.dropdown-button {
+.top-bar-auth .button {
   font-family: $font-montserrat;
   margin-bottom: 2rem;
   text-align: center;
@@ -121,4 +121,14 @@ thead tr th{
 thead {
   font-size: $fontSize-small-1;
   font-weight: bold;
+}
+
+.cart__cta {
+  width: 100%;
+  padding: 1rem;
+
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    bottom: 0;
+  }
 }

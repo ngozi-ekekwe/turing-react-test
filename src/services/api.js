@@ -60,6 +60,11 @@ export function getProductsByDepartment(departmentId) {
   return apiGetRequest(path)
 }
 
+export function getProductsByCategory(categoryId) {
+  const path = `/products/inCategory/${categoryId}`;
+  return apiGetRequest(path);
+}
+
 export function getProductById(productId) {
   const path = `products/${productId}`;
   return apiGetRequest(path);

@@ -1,26 +1,60 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from '../routes';
 import Loader from './Loader';
 
-const SideBar = ({ categories }) => {
-  return (
-    <Fragment>
-      <p className="categories">categories</p>
-      {categories && categories.length <= 0 &&<Loader />}
-      <div className="category-listing">
-        {
-          categories && categories.length > 0 && categories.map((category, i) => {
-            return (
-              <ul className="category-list" key={`category-${i}`}>
-                <li className="category-items"><input type="checkbox" id={category.name} /><label htmlFor={category.name}>{category.name}</label>
-                </li>
-              </ul>
-            )
-          })
-        }
-      </div>
-    </Fragment>
-  );
-};
+class SideBar extends Component {
+  constructor(props) {
+    super(props)
 
-export default SideBar;
+    this.state = {
+      checked: false
+    }
+  }
+
+  setCategory = (e) => {
+    this.props.setCategory(e.target.name)
+    this.setState({
+      checked: e.target.id
+    })
+  }
+
+  render() {
+    const { categories } = this.props;
+    const { checked } = this.state;
+    return (
+      <Fragment>
+        <p className="categories">categories</p>
+        {categories && categories.length <= 0 && <Loader />}
+        <div className="category-listing">
+          {
+            categories && categories.length > 0 && categories.map((category, i) => {
+              return (
+                <ul className="category-list" key={`category-${i}`}>
+                  <li className="category-items"><input type="checkbox" name={category.category_id} onChange={this.setCategory} id={category.name} checked={checked === category.name ? true : false} /><label htmlFor={category.name} defaultChecked={false}>{category.name}</label>
+                  </li>
+                </ul>
+              )
+            })
+          }
+        </div>
+      </Fragment>
+    )
+  }
+}
+
+
+function mapStateToProps(state, props) {
+  return {
+    departments: state.department.departments,
+    searchResults: state.product.searchResults.rows
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    setCategory: (category) => dispatch({ type: 'GET_PRODUCTS_BY_CATEGORY', category }),
+  });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

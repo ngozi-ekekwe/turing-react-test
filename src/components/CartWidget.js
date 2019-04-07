@@ -15,14 +15,14 @@ const CartWidget = ({
         <CartListing toggleCartWidgetHandler={toggleCartWidgetHandler} />
       </div>
 
-      <div className="cart__cta">
-        {/* <Link to="/checkout">
+      <div className="cart__cta txt-align">
+        <Link to="/checkout">
           <Button
             text="CHECKOUT"
             onClick={() => true}
           >  
           </Button>
-        </Link> */}
+        </Link>
       </div>
     </div>
   </div>
