@@ -19,4 +19,8 @@ export const getAllProducts = customSelectorCreator(
   },
 );
 
+export const getRegionalProducts = customSelectorCreator(
+  [getProducts, 'regional']
+)
+
 

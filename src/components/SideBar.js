@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
+import Loader from './Loader';
 
 const SideBar = ({ categories }) => {
   return (
     <Fragment>
       <p className="categories">categories</p>
+      {categories && categories.length <= 0 &&<Loader />}
       <div className="category-listing">
         {
           categories && categories.length > 0 && categories.map((category, i) => {

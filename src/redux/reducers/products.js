@@ -12,7 +12,8 @@ export default function product (state = initialState.product, action) {
   switch(action.type) {
     case GET_ALL_PRODUCTS_SUCCESS: {
       return update(state, {
-        products: { $set: action.products}
+        products: { $set: action.products},
+        page: { $set: 1}
       });
     }
 

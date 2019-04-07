@@ -63,16 +63,11 @@ class Header extends Component {
                 </div>
               </div>
               <div className=" header-sections">
-                <ul className="header-items">
-                  <li>
-                    <button onClick={() => this.onDepartmentChange()}>All</button>
-                  </li>
-                </ul>
                 {departments && departments.map((department, i) => {
                   return (<ul className="header-items" key={`department-${i}`}>
-                    <li>
-                      <button onClick={() => this.onDepartmentChange(department.department_id)}>{department.name}</button>
-                    </li>
+                    <Link to={`/department/${department.department_id}`}>
+                      <a href={`/department/${department.department_id}`}>{department.name}</a>
+                    </Link>
                   </ul>)
                 })}
               </div>

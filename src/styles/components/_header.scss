@@ -22,7 +22,7 @@
   justify-content: space-between;
 }
 
-.header-items button {
+.header-items a {
   color: $color-white;
   font-family: $font-montserrat;
   font-size: $fontSize-small-1;
@@ -30,6 +30,10 @@
   background-color: inherit;
   border: 0;
   cursor: pointer;
+}
+
+.header-items + .header-items {
+  margin-left: 1rem;
 }
 
 .search-wrapper {

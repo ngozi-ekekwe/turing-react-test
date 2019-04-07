@@ -13,7 +13,7 @@ const getCurrentDepartment = (state, props) => state.department.departmentId
 
 
 export const getAllCategories = customSelectorCreator(
-  [getCategories, getCurrentDepartment],
+  [getCategories],
   (categories, departmentId) => {
     if (departmentId) {
       return categories.rows.filter((category) => category.department_id === departmentId
