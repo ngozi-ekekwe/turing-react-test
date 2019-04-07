@@ -2,14 +2,47 @@ import React, { Component } from 'react';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { connect } from 'react-redux';
 import InputWrapper from '../components/Input';
+import CartListing from '../components/CartListing';
+import Profile from '../components/Profile';
 
 
 class Checkout extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      currentStep: 1
+    }
   }
 
   componentDidMount() {
+  }
+
+  renderForm() {
+    const { currentStep } = this.state;
+    switch(currentStep) {
+      case 1: {
+        return <CartListing />
+      }
+
+      case 2 : {
+        return <Profile />
+      }
+
+      case 3: {
+        return 'payment'
+      }
+
+      case 4: {
+        return 'success'
+      }
+    }
+  }
+
+  moveToNextStep = () => {
+    this.setState({
+      currentStep: this.state.currentStep + 1
+    })
   }
 
   
@@ -19,11 +52,12 @@ class Checkout extends Component {
       <DefaultLayout>
         <div className="container mt-4">
           <div className="row">
-            <div className="col-6">
-              
-
+            <div className="col-8">
+              {this.renderForm()}
+              <div>
+                <button className="btn mt-3" onClick={this.moveToNextStep}>CONTINUE</button>
+              </div>
             </div>
-            <div className="col-6"></div>
           </div>
         </div>
       </DefaultLayout>
