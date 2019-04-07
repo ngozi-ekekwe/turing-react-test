@@ -106,3 +106,8 @@ export function getAllCustomerOrders() {
   const path = `orders/inCustomer`
   return apiGetRequest(path);
 }
+
+export function getAllShippingRegions() {
+  const path = `shipping/regions`;
+  return apiGetRequest(path)
+}

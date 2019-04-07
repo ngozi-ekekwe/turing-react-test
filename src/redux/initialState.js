@@ -34,5 +34,9 @@ export default {
 
   order: {
     orders: []
+  },
+  regions: {
+    shipping_regions: [],
+    error: []
   }
 }

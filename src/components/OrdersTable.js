@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { Table } from 'react-bootstrap';
 
 const OrdersTable = ({ orders }) => {
@@ -18,8 +19,8 @@ const OrdersTable = ({ orders }) => {
             <tr>
               <td>{order.order_id}</td>
               <td>${order.total_amount}</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td>{moment(order.created_at).format('MMMM Do YYYY')}</td>
+              <td>-</td>
             </tr>
           )
         })}

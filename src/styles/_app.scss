@@ -114,13 +114,14 @@ img {
   font-weight: 100;
 }
 
-thead tr th{
+thead, tr, th{
   font-family: $font-montserrat;
   color: $color-black;
 }
 thead {
   font-size: $fontSize-small-1;
   font-weight: bold;
+  text-align: left;
 }
 
 .cart__cta {

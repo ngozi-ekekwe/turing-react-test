@@ -8,7 +8,6 @@ import Router from 'next/router';
 export function* getAllOrdersSaga(customerId) {
   try {
     const response = yield call(getAllCustomerOrders);
-    console.log(response)
     yield put(getAllCustomerOrdersSuccess(response))
   }catch(err) {
     yield put(getAllCustomerOrdersFailure(err))
@@ -18,7 +17,6 @@ export function* getAllOrdersSaga(customerId) {
 export function* watchGetAllOrder() {
   while (true) {
     const action = yield take('GET_ALL_CUSTOMER_ORDERS');
-    console.log(action)
     yield call(getAllOrdersSaga, action.customerId);
   }
 }

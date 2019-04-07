@@ -17,12 +17,10 @@ class Account extends Component {
   }
 
   updateProfile = () => {
-    console.log('I got called')
   }
 
   render() {
     const { orders} = this.props;
-    console.log(this.props.customer)
     return (
       <DefaultLayout>
         <div className="container mt-4">

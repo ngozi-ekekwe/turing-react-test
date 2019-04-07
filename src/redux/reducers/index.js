@@ -7,6 +7,7 @@ import auth from './auth';
 import attribute from './attributes';
 import cart from './cart';
 import order from './order';
+import shipment from './shipment';
 
 const rootReducer = combineReducers({
   department,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   auth,
   attribute,
   cart,
-  order
+  order,
+  shipment
 });
 
 export default rootReducer;

@@ -52,11 +52,14 @@ class Checkout extends Component {
       <DefaultLayout>
         <div className="container mt-4">
           <div className="row">
-            <div className="col-12">
+            <div className="col-6">
               {this.renderForm()}
               <div>
-                <button className="btn mt-3" onClick={this.moveToNextStep}>CONTINUE</button>
+                {/* <button className="btn mt-3" onClick={this.moveToNextStep}>CONTINUE</button> */}
               </div>
+            </div>
+            <div>
+              <CartListing />
             </div>
           </div>
         </div>
