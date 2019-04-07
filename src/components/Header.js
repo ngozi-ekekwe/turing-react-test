@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CartWidget from './CartWidget';
+import { withRouter } from 'next/router';
 import { Link } from '../routes';
 import { ToastContainer } from "react-toastify";
 
@@ -52,6 +53,9 @@ class Header extends Component {
   render() {
     const { search_term, searchResults = [], departments, searchProduct } = this.props;
     const { search_started } = this.state;
+    const slug = this.props.router.query.slug;
+
+    console.log(this.props.router.query.slug)
     return (
       <div className="header">
         <div className="container">
@@ -66,7 +70,7 @@ class Header extends Component {
                 {departments && departments.map((department, i) => {
                   return (<ul className="header-items" key={`department-${i}`}>
                     <Link to={`/department/${department.department_id}`}>
-                      <a href={`/department/${department.department_id}`}>{department.name}</a>
+                      <a  className={`${slug === department.department_id.toString() ? 'active': '' }`} href={`/department/${department.department_id}`}>{department.name}</a>
                     </Link>
                   </ul>)
                 })}
@@ -120,4 +124,4 @@ const mapDispatchToProps = (dispatch) => {
   });
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

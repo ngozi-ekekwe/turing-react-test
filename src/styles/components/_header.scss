@@ -30,6 +30,11 @@
   background-color: inherit;
   border: 0;
   cursor: pointer;
+
+  &.active {
+    color: $color-pink;
+    font-weight: bold;
+  }
 }
 
 .header-items + .header-items {
