@@ -4,6 +4,7 @@ import InputWrapper from './Input';
 import Button from './Button';
 import { loginFields } from '../helpers/auth'
 import { loginCustomer } from '../redux/actions/customers';
+import Router from 'next/router';
 
 
 class Login extends Component {
@@ -45,7 +46,7 @@ class Login extends Component {
             })
           }
           <div className="mt-4 txt-align">
-            <Button text="SIGN IN" onClick={this.onClick} loading={loading } />
+            <Button text="SIGN IN" onClick={this.onClick} loading={loading && !error } />
           </div>
         </div>
       </div>

@@ -59,6 +59,14 @@ img {
   cursor: pointer;
 }
 
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: $color-pink;
+  border-color: $color-pink;
+  
+}
+
 .shopping-cart {
   cursor: pointer;
 }
@@ -104,4 +112,13 @@ img {
   margin-bottom: 2rem;
   text-align: center;
   font-weight: 100;
+}
+
+thead tr th{
+  font-family: $font-montserrat;
+  color: $color-black;
+}
+thead {
+  font-size: $fontSize-small-1;
+  font-weight: bold;
 }

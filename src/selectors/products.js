@@ -9,12 +9,11 @@ const hashFn = (...args) => args.reduce(
 const customSelectorCreator = createSelectorCreator(memoize, hashFn);
 
 const getProducts = (state, props) => state.product.products;
-const getCurrentDepartment = (state, props) => state.department.departmentId
-
+const getCurrentDepartment = (state, props) => state.department.departmentId;
 
 export const getAllProducts = customSelectorCreator(
-  [getProducts, getCurrentDepartment],
-  (products, departmentId) => {
+  [getProducts],
+  (products) => {
     return products
   },
 );

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from '../routes';
 import Loader from './Loader';
 
 const SideBar = ({ categories }) => {

@@ -13,7 +13,6 @@ export default function product (state = initialState.product, action) {
     case GET_ALL_PRODUCTS_SUCCESS: {
       return update(state, {
         products: { $set: action.products},
-        page: { $set: 1}
       });
     }
 

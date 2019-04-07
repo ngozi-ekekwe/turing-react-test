@@ -26,6 +26,7 @@ class Home extends Component {
   render() {
     const { categories, products } = this.props;
     const count = products.count && products.count.count ? products.count.count : products.count
+    console.log(products.rows)
     return (
       <DefaultLayout>
         <LandingPage />

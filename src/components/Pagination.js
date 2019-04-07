@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 
-const Pagination = ({ productCount, setPage }) => {
+const Pagination = ({ productCount, setPage, page }) => {
   let items = [];
   let pages = productCount && Math.floor(productCount/20)
 
@@ -9,7 +10,7 @@ const Pagination = ({ productCount, setPage }) => {
   }
   for (let number = 1; number <= pages; number++) {
     items.push(
-      <li key={number} className="page-item"><a className="page-link" onClick={() => setPage(number)}>
+      <li key={number} className={`page-item ${page === number ? 'active': ''}`}><a className="page-link" onClick={() => setPage(number)}>
         {number}
       </a></li>
     );
@@ -25,4 +26,10 @@ const Pagination = ({ productCount, setPage }) => {
   );
 };
 
-export default Pagination;
+function mapStateToProps(state, props) {
+  return {
+    page: state.product.page,
+  };
+}
+
+export default connect(mapStateToProps, null)(Pagination);
