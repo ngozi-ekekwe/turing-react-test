@@ -89,3 +89,18 @@ export function productSearch(query_string) {
   const path = `products/search?query_string=${query_string}`
   return apiGetRequest(path);
 }
+
+export function createOrder(order) {
+  const path = 'orders';
+  return apiPostRequest(path, order)
+}
+
+export function getOrder(order_id) {
+  const path = `orders/${order_id}`
+  return apiGetRequest(path);
+}
+
+export function getAllCustomerOrders(customer_id) {
+  const path = `orders/inCustomer/${customer_id}`
+  return apiGetRequest(path);
+}

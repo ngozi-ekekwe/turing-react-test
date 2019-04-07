@@ -31,4 +31,8 @@ export default {
     previousCartItems: null,
     toggleCartWidget: false
   },
+
+  order: {
+    orders: []
+  }
 }

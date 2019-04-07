@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DefaultLayout from '../layouts/DefaultLayout';
 import OrdersTable from '../components/OrdersTable';
+import { connect } from 'react-redux';
 import InputWrapper from '../components/Input';
 import { fields } from '../helpers/shipping';
 
@@ -9,7 +10,16 @@ class Account extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.getAllOrders()
+  }
+
+  updateProfile = () => {
+
+  }
+
   render() {
+    const { orders} = this.props;
     return (
       <DefaultLayout>
         <div className="container mt-4">
@@ -24,8 +34,9 @@ class Account extends Component {
                   )
                 })
               }
+              <button className="btn mt-3" onClick={this.updateProfile}>UPDATE PROFILE</button>
             </div>
-            <div className="col-6"><OrdersTable /></div>
+            <div className="col-6"><OrdersTable orders={orders} /></div>
           </div>
         </div>
       </DefaultLayout>
@@ -33,4 +44,16 @@ class Account extends Component {
   }
 }
 
-export default Account;
+function mapStateToProps(state, props) {
+  return {
+    orders: state.order.orders
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    getAllOrders: (customerId) => dispatch({ type: 'GET_ALL_CUSTOMER_ORDERS', customerId }),
+  });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account);
