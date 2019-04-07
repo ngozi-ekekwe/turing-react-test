@@ -11,15 +11,18 @@ class Account extends Component {
   }
 
   componentDidMount() {
-    this.props.getAllOrders()
+    if (this.props.customer && this.props.customer.customer_id) {
+      this.props.getAllOrders(this.props.customer.customer_id)
+    }
   }
 
   updateProfile = () => {
-
+    console.log('I got called')
   }
 
   render() {
     const { orders} = this.props;
+    console.log(this.props.customer)
     return (
       <DefaultLayout>
         <div className="container mt-4">
@@ -46,7 +49,8 @@ class Account extends Component {
 
 function mapStateToProps(state, props) {
   return {
-    orders: state.order.orders
+    orders: state.order.orders,
+    customer: state.customer.customer
   };
 }
 

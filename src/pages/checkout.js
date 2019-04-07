@@ -22,11 +22,11 @@ class Checkout extends Component {
     const { currentStep } = this.state;
     switch(currentStep) {
       case 1: {
-        return <CartListing />
+        return <Profile />
       }
 
       case 2 : {
-        return <Profile />
+        return <CartListing />
       }
 
       case 3: {
@@ -52,7 +52,7 @@ class Checkout extends Component {
       <DefaultLayout>
         <div className="container mt-4">
           <div className="row">
-            <div className="col-8">
+            <div className="col-12">
               {this.renderForm()}
               <div>
                 <button className="btn mt-3" onClick={this.moveToNextStep}>CONTINUE</button>

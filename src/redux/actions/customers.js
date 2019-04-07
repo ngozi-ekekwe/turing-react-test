@@ -8,7 +8,10 @@ import {
   LOGIN_CUSTOMER_SUCCESS,
   LOGIN_CUSTOMER_FAILURE,
 
-  LOGOUT_CUSTOMER
+  LOGOUT_CUSTOMER,
+
+  UPDATE_CUSTOMER_ADDRESS_SUCCESS,
+  UPDATE_CUSTOMER_ADDRESS_FAILURE
 } from '../actionTypes';
 
 export function createCustomer(customer) {
@@ -56,5 +59,19 @@ export function loginCustomerFailure(error) {
 export function logoutCustomer() {
   return {
     type: LOGOUT_CUSTOMER,
+  }
+}
+
+export function updateCustomerAddressSuccess(customer) {
+  return {
+    type: UPDATE_CUSTOMER_ADDRESS_SUCCESS,
+    customer
+  }
+}
+
+export function updateCustomerAddressFailure(error) {
+  return {
+    type: UPDATE_CUSTOMER_ADDRESS_FAILURE,
+    error
   }
 }

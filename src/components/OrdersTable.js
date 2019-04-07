@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const OrdersTable = ({orders}) => {
+const OrdersTable = ({ orders }) => {
   return (
     <Table striped bordered hover>
       <thead>
@@ -13,12 +13,16 @@ const OrdersTable = ({orders}) => {
         </tr>
       </thead>
       <tbody>
-        {orders && orders.length >0 &&<tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>}
+        {orders && orders.map((order) => {
+          return (
+            <tr>
+              <td>{order.order_id}</td>
+              <td>${order.total_amount}</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+          )
+        })}
       </tbody>
     </Table>
   );

@@ -11,10 +11,7 @@ export const endpoint = (path) => {
 
 const setHeaderMethod = (requestType, requestBody) => {
   const newBody = JSON.stringify(requestBody)
-  let token;
-  if(process.browser) {
-    const token = localStorage.getItem('token')
-  }
+  const token = localStorage.getItem('user-key')
   return {
     method: requestType,
     headers: new Headers({
@@ -105,7 +102,7 @@ export function getOrder(order_id) {
   return apiGetRequest(path);
 }
 
-export function getAllCustomerOrders(customer_id) {
-  const path = `orders/inCustomer/${customer_id}`
+export function getAllCustomerOrders() {
+  const path = `orders/inCustomer`
   return apiGetRequest(path);
 }
