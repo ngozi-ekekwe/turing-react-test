@@ -12,7 +12,8 @@ export default {
     products: [],
     error: null,
     page: 1,
-    searchResults: []
+    searchResults: [],
+    category: null,
   },
   customer: {
     customer: {},

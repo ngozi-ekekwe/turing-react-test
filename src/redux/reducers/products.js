@@ -13,9 +13,15 @@ export default function product (state = initialState.product, action) {
     case GET_ALL_PRODUCTS_SUCCESS: {
       return update(state, {
         products: { $set: action.products},
+        category: { $set: null}
       });
     }
 
+    // case RESET_CATEGORY: {
+    //   return update(state, {
+    //     category: { $set: null}
+    //   })
+    // }
     case GET_ALL_PRODUCTS_FAILURE: {
       return {
         ...state,

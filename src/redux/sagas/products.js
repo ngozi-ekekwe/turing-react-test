@@ -1,6 +1,6 @@
 import { put, take, call } from 'redux-saga/effects';
 
-import { getAllProducts, productSearch } from '../../services/api';
+import { getAllProducts, productSearch, getProductsByCategory } from '../../services/api';
 import { getAllProductsSuccess, getAllProductsFailure, searchProductSuccess, searchProductFailure } from '../actions/products';
 
 
@@ -10,6 +10,23 @@ export function* getProducts(page) {
     yield put(getAllProductsSuccess(products))
   }catch(err) {
     yield put(getAllProductsFailure(err))
+  }
+}
+
+export function* getProductsByCategorySaga(category) {
+  try {
+    const products = yield call(getProductsByCategory, category)
+    console.log(products, 'products')
+    yield put(getAllProductsSuccess(products))
+  } catch(err) {
+    yield put(getAllProductsFailure(err))
+  }
+}
+
+export function* watchGetProductsByCategory() {
+  while(true) {
+    const action = yield take('SET_CATEGORY');
+    yield call(getProductsByCategorySaga, action.category);
   }
 }
 

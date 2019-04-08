@@ -64,7 +64,7 @@ export function getProductsByDepartment(departmentId) {
 }
 
 export function getProductsByCategory(categoryId) {
-  const path = `/products/inCategory/${categoryId}`;
+  const path = `products/inCategory/${categoryId}`;
   return apiGetRequest(path);
 }
 

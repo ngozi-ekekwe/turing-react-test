@@ -13,10 +13,15 @@ class SideBar extends Component {
   }
 
   setCategory = (e) => {
-    this.props.setCategory(e.target.name)
+    if (e.target.id === this.state.checked) {
+      return this.setState({
+        checked: false
+      })
+    }
     this.setState({
       checked: e.target.id
     })
+    return this.props.setCategory(e.target.name)
   }
 
   render() {
@@ -53,7 +58,7 @@ function mapStateToProps(state, props) {
 
 const mapDispatchToProps = (dispatch) => {
   return ({
-    setCategory: (category) => dispatch({ type: 'GET_PRODUCTS_BY_CATEGORY', category }),
+    setCategory: (category) => dispatch({ type: 'SET_CATEGORY', category }),
   });
 }
 
