@@ -37,6 +37,7 @@ export default {
   },
   regions: {
     shipping_regions: [],
-    error: []
+    error: [],
+    shipping_id: null
   }
 }

@@ -109,5 +109,10 @@ export function getAllCustomerOrders() {
 
 export function getAllShippingRegions() {
   const path = `shipping/regions`;
-  return apiGetRequest(path)
+  return apiGetRequest(path);
+}
+
+export function getDeliveryOptions(shipping_regions) {
+  const path = `shipping/regions/${shipping_regions}`;
+  return apiGetRequest(path);
 }

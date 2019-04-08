@@ -5,15 +5,14 @@
     height: 100%;
     border: unset;
     padding: 12px 12px;
-    color: black;
+    color: $color-black;
     background-color: unset;
     font-size: 16px;
-    font-family: 'Roboto';
+    font-family: $font-montserrat;
   }
   select {
-    margin: -10px 0;
-    height: 44px !important;
-    outline-color: black;
+    font-family: $font-montserrat;
+
 
     &:focus {
       outline: none;

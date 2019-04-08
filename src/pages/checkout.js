@@ -52,7 +52,7 @@ class Checkout extends Component {
       <DefaultLayout>
         <div className="container mt-4">
           <div className="row">
-            <div className="col-6">
+            <div className="col-7">
               {this.renderForm()}
               <div>
                 {/* <button className="btn mt-3" onClick={this.moveToNextStep}>CONTINUE</button> */}
