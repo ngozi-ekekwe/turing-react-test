@@ -11,7 +11,10 @@ export const endpoint = (path) => {
 
 const setHeaderMethod = (requestType, requestBody) => {
   const newBody = JSON.stringify(requestBody)
-  const token = localStorage.getItem('user-key')
+  let token
+  if(process.browser) {
+    token = localStorage.getItem('user-key')
+  }
   return {
     method: requestType,
     headers: new Headers({
@@ -30,6 +33,9 @@ export const apiGetRequest = (path) =>
 export const apiPostRequest = (path, body) =>
   fetch(endpoint(path), setHeaderMethod('POST', body))
     .then((res) => res.json())
+
+export const apiPutRequest = (path, body) => fetch(endpoint(path), setHeaderMethod('PUT', body))
+.then((res) => res.json())
 
 
 export function getDepartments() {
@@ -115,4 +121,19 @@ export function getAllShippingRegions() {
 export function getDeliveryOptions(shipping_regions) {
   const path = `shipping/regions/${shipping_regions}`;
   return apiGetRequest(path);
+}
+
+export function generateShoppingCartUniqueID() {
+  const path = `shoppingcart/generateUniqueId`;
+  return apiGetRequest(path);
+}
+
+export function addItemToCart(data) {
+  const path = 'shoppingcart/add';
+  return apiPostRequest(path, data)
+}
+
+export function updateCustomerAddress(data) {
+  const path = 'customers/address';
+  return apiPutRequest(path, data)
 }

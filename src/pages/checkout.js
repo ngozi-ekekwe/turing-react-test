@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import InputWrapper from '../components/template/Input';
 import CartListing from '../components/cart/CartListing';
 import Profile from '../components/template/Profile';
+import { generateShoppingCartUniqueID, addItemToCart } from '../services/api';
 
 
 class Checkout extends Component {
@@ -18,18 +19,43 @@ class Checkout extends Component {
   componentDidMount() {
   }
 
+  addItem = (item, cart_id) => {
+    for(let i =0; i< item.quantity; i++) {
+      let data = {
+        cart_id: cart_id,
+        product_id: item.id,
+        attributes: item.attributes,
+      }
+      addItemToCart(data)
+    }
+  }
+
+  addToCart = () => {
+    const { cart } = this.props;
+   return  generateShoppingCartUniqueID().then((res) => {
+      const cart_id = res.cart_id
+      this.props.saveUniqueId(cart_id);
+      return cart.forEach((item) => {
+        this.addItem(item, cart_id)
+        })
+    });
+  }
+
   renderForm() {
     const { currentStep } = this.state;
     switch(currentStep) {
+      // case 1: {
+      //   return (<div>
+      //     <CartListing />
+      //     <button className="btn mt-3" onClick={this.addToCart}>BEGIN CHECKOUT</button>
+      //   </div>)
+      // }
+
+      // case 1 : {
+      //   return <Profile />
+      // }
+
       case 1: {
-        return <Profile />
-      }
-
-      case 2 : {
-        return <CartListing />
-      }
-
-      case 3: {
         return 'payment'
       }
 
@@ -58,9 +84,6 @@ class Checkout extends Component {
                 {/* <button className="btn mt-3" onClick={this.moveToNextStep}>CONTINUE</button> */}
               </div>
             </div>
-            <div>
-              <CartListing />
-            </div>
           </div>
         </div>
       </DefaultLayout>
@@ -69,11 +92,16 @@ class Checkout extends Component {
 }
 
 function mapStateToProps(state, props) {
-  
+  return {
+    cart: state.cart.cartItems,
+    cart_id: state.cart.cart_id
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
- 
+  return {
+    saveUniqueId: (id) => dispatch({type: 'SAVE_UNIQUE_CART_ID', id})
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

@@ -29,7 +29,8 @@ export default {
     cartItems: [],
     cartTotal: 0,
     previousCartItems: null,
-    toggleCartWidget: false
+    toggleCartWidget: false,
+    cart_id: null
   },
 
   order: {

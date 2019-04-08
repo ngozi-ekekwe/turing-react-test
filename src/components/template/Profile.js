@@ -15,8 +15,9 @@ class Profile extends Component {
       region: null,
       postal_code: null,
       country: null,
-      shipping_region: null,
-      email: null
+      shipping_region_id: null,
+      email: null,
+      mob_phone: null
     }
   }
 
@@ -38,20 +39,40 @@ class Profile extends Component {
       region: customer.region,
       postal_code: customer.postal_code,
       country: customer.country,
-      email: customer.email
+      email: customer.email,
+      mob_phone: customer.mob_phone
     })
   }
 
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   onSelectChange = (e) => {
+    const { regions } = this.props;
+    const region = regions.filter((region) => {
+      return region.shipping_region_id.toString() === e.target.value
+    })
+    this.setState({
+      region: region[0].shipping_region,
+      shipping_region_id: e.target.value
+    })
     this.props.getDeliveryOptions(e.target.value)
   }
 
-  onShipmentIdChnage = (e) => {
+  onShipmentIdChange = (e) => {
+    console.log(e)
     this.props.setShippingId(e.target.value)
+    // this.setState({})
+  }
+
+  updateProfile = () => {
+    this.props.updateCustomerProfile(this.state)
   }
 
   render() {
-    const { shipment, shipping_options } = this.props;
+    const { regions, shipping_options } = this.props;
+    console.log(this.state)
     return (
       <Fragment>
         <div className="row">
@@ -61,7 +82,7 @@ class Profile extends Component {
                 <div className={field.classname}>
                   <label className="form-label">{field.label}</label>
                   <InputWrapper key={i}>
-                    <input placeholder={field.placeHolder} type={field.type} name={field.name} defaultValue={this.state[field.name]} />
+                    <input placeholder={field.placeHolder} type={field.type} name={field.name} defaultValue={this.state[field.name]} onChange={this.onChange} />
                   </InputWrapper>
                 </div>
               )
@@ -73,7 +94,7 @@ class Profile extends Component {
             <label className="form-label">Regions</label>
             <InputWrapper>
               <select className="custom-select" id="inputGroupSelect01" onChange={this.onSelectChange}>
-                {shipment && shipment.map((shi) => {
+                {regions && regions.map((shi) => {
                   return <option value={shi.shipping_region_id}>{shi.shipping_region}</option>
                 })}
               </select>
@@ -81,16 +102,16 @@ class Profile extends Component {
           </div>
           <div className="col-6">
             <label className="form-label">Delivery Options</label>
-            <InputWrapper>
-              <select className="custom-select" id="inputGroupSelect01" onChange={this.onShipmentIdChnage}>
+            {/* <InputWrapper>
+              <select className="custom-select" id="inputGroupSelect01" onChange={this.onShipmentIdChange}>
                 {shipping_options && shipping_options.map((shi) => {
-                  return <option value={shi.shipping_id}>{shi.shipping_type}</option>
+                  return <option  value={shi.shipping_id}>{shi.shipping_type}</option>
                 })}
               </select>
-            </InputWrapper>
+            </InputWrapper> */}
           </div>
 
-          <button className="btn mt-4">UPDATE PROFILE</button>
+          <button className="btn mt-4" onClick={this.updateProfile}>UPDATE PROFILE</button>
         </div>
       </Fragment>
     )
@@ -100,7 +121,7 @@ class Profile extends Component {
 function mapStateToProps(state, props) {
   return {
     customer: state.customer.customer,
-    shipment: state.shipment.shipping_regions,
+    regions: state.shipment.shipping_regions,
     shipping_options: state.shipment.shipping
 
   }
@@ -111,7 +132,8 @@ const mapDispatchToProps = (dispatch) => {
     getAllShippingRegions: () => dispatch({ type: 'GET_ALL_REGIONS' }),
     setShipmentId: (id) => dispatch({ type: 'SET_SHIPMENT_ID', id }),
     getDeliveryOptions: (id) => dispatch({type: 'GET_SHIPPING_ID', id}),
-    setShippingId: (shipping_id) => dispatch({type: 'SET_SHIPPING_ID', shipping_id})
+    setShippingId: (shipping_id) => dispatch({type: 'SET_SHIPPING_ID', shipping_id}),
+    updateCustomerProfile: (customer) => dispatch({type: 'UPDATE_CUSTOMER_PROFILE', customer})
   }
 }
 

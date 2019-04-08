@@ -138,3 +138,12 @@ thead {
   font-family: $font-montserrat;
   color: #b4b4b4;
 }
+
+.remove__button {
+  color: red;
+  font-weight: bold;
+  font-family: $font-montserrat;
+  text-align: left;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}

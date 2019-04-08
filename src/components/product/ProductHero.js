@@ -78,7 +78,6 @@ class ProductHero extends Component {
   render() {
     const { quantity, currentImage } = this.state;
     const { product, attributes } = this.props;
-    console.log(product)
     let colorAttributes = []
     let sizeAttributes = [];
     attributes && attributes.filter((attribute) => {

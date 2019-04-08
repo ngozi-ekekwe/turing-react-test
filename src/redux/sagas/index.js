@@ -2,7 +2,7 @@ import { all, fork } from 'redux-saga/effects';
 import { watchGetAllDepartments, watchGetCategoriesProducts, watchGetProductsByDepartment, watchGetCategoriesByDepartment } from './departments';
 import { watchGetAllCategories} from './category';
 import { watchGetProducts, watchSetPage, watchSearchProducts } from './products';
-import { watchCreateCustomer, watchLoginCustomer } from './customers';
+import { watchCreateCustomer, watchLoginCustomer, watchUpdate } from './customers';
 import { watchProductAttributes } from './attribute';
 import { watchGetAllOrder } from './order';
 import { watchShipmentRegions, watchShipmentOptions } from './shipment';
@@ -21,6 +21,7 @@ export default function* rootSaga() {
     fork(watchGetCategoriesByDepartment),
     fork(watchGetAllOrder),
     fork(watchShipmentRegions),
-    fork(watchShipmentOptions)
+    fork(watchShipmentOptions),
+    fork(watchUpdate)
   ]);
 }

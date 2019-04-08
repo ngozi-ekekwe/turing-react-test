@@ -1,7 +1,7 @@
 import { put, take, call } from 'redux-saga/effects';
 
-import { createCustomer, loginCustomer } from '../../services/api';
-import { createCustomerSuccess, createCustomerFailure } from 
+import { createCustomer, loginCustomer, updateCustomerAddress } from '../../services/api';
+import { createCustomerSuccess, createCustomerFailure, updateCustomerAddressSuccess, updateCustomerAddressFailure } from 
 '../actions/customers';
 import Router from 'next/router';
 
@@ -30,6 +30,21 @@ export function* loginCustomerSaga(customer) {
     yield put(createCustomerFailure(response))
   }catch(err) {
     yield put(createCustomerFailure(err))
+  }
+}
+
+export function* updateCustomerProfile(data) {
+  try{
+    const response = yield call(updateCustomerAddress, data);
+    yield put(updateCustomerAddressSuccess(response))
+  }catch(err) {
+    yield put(createCustomerFailure(err))
+  }
+}
+export function* watchUpdate() {
+  while (true) {
+    const action = yield take('UPDATE_CUSTOMER_PROFILE');
+    yield call(updateCustomerProfile, action.customer);
   }
 }
 

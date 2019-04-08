@@ -10,7 +10,7 @@ export const fields = [
     label: 'Email',
     placeHolder: 'Email*',
     type: 'email',
-    name: 'name',
+    name: 'email',
     classname:"col-6 mb-4"
   },
   {
@@ -35,17 +35,17 @@ export const fields = [
     classname:"col-6 mb-4"
   },
   {
-    label: 'Region',
-    placeHolder: 'Region*',
-    type: "text",
-    name: 'region',
-    classname:"col-6 mb-4"
-  },
-  {
     label: 'Postal Code',
     placeHolder: 'Postal Code*',
     type: "text",
     name: 'postal_code',
+    classname:"col-6 mb-4"
+  },
+  {
+    label: 'Phone Number',
+    placeHolder: 'Phone Number',
+    type: "text",
+    name: 'mob_phone',
     classname:"col-12 mb-4"
   },
 ]

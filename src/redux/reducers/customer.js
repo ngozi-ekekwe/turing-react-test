@@ -6,8 +6,8 @@ import {
   LOGIN_CUSTOMER_SUCCESS,
   LOGIN_CUSTOMER_FAILURE,
 
-  LOGOUT_CUSTOMER
-
+  LOGOUT_CUSTOMER,
+  UPDATE_CUSTOMER_ADDRESS_FAILURE
  } from '../actionTypes';
 import initialState from '../initialState';
 import update from "immutability-helper";
@@ -15,6 +15,12 @@ import update from "immutability-helper";
 export default function customer (state = initialState.customer, action) {
   switch(action.type) {
     case CREATE_CUSTOMER_SUCCESS: {
+      return update(state, {
+        customer: { $set: action.customer}
+      });
+    }
+
+    case UPDATE_CUSTOMER_ADDRESS_FAILURE: {
       return update(state, {
         customer: { $set: action.customer}
       });

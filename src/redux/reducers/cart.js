@@ -20,8 +20,12 @@ export default function cartReducer(state = initialState.cart, action) {
     state.cartItems, (obj, val) => obj.id === val.id, action.item, operation, action.quantity,
   );
 
-  const handleRemoveItem = (item) => (state.cartItems.filter((obj) => obj.sku !== item.sku));
-
+  const handleRemoveItem = (item) => {
+    return (state.cartItems.filter((obj) => {
+      return obj.id !== item.id
+    }));
+  
+  }
   switch (action.type) {
     case types.ADD_ITEM_TO_CART: {
       return { ...state, cartItems: [...state.cartItems, action.item], previousCartItems: null };
@@ -30,7 +34,7 @@ export default function cartReducer(state = initialState.cart, action) {
       return { ...state, cartItems: handleQuantityUpdate('add'), previousCartItems: null };
     }
     case types.REMOVE_ITEM_FROM_CART: {
-      return { ...state, cartItems: handleRemoveItem(action.item), previousCartItems: null };
+      return { ...state, cartItems: handleRemoveItem(action.item) };
     }
     case types.DECREMENT_CART_ITEM_QUANTITY: {
       return { ...state, cartItems: action.item.quantity === 1 ? handleRemoveItem(action.item) : handleQuantityUpdate('remove'), previousCartItems: null };
@@ -44,6 +48,9 @@ export default function cartReducer(state = initialState.cart, action) {
     }
     case types.CLEAR_CART_ITEMS: {
       return { ...state, ...initialState.cart };
+    }
+    case types.SAVE_UNIQUE_CART_ID: {
+      return {...state, cart_id: action.id}
     }
     default: {
       return state;
