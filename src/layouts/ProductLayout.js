@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SideBar from '../components/SideBar';
-import ProductCard from '../components/ProductCard';
-import Pagination from '../components/Pagination';
+import SideBar from '../components/template/SideBar';
+import ProductCard from '../components/product/ProductCard';
+import Pagination from '../components/template/Pagination';
 
 class ProductLayout extends Component {
   render() {

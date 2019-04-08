@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DefaultLayout from '../layouts/DefaultLayout';
 import ProductLayout from '../layouts/ProductLayout';
-import LandingPage from '../components/LandingPage'
+import LandingPage from '../components/template/LandingPage'
 import { getAllCategories } from '../selectors/categories';
 import { getAllProducts } from '../selectors/products';
-import Loader from '../components/Loader';
+import Loader from '../components/template/Loader';
 
 class Home extends Component {
 

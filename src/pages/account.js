@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import DefaultLayout from '../layouts/DefaultLayout';
-import OrdersTable from '../components/OrdersTable';
+import OrdersTable from '../components/order/OrdersTable';
 import { connect } from 'react-redux';
-import InputWrapper from '../components/Input';
+import InputWrapper from '../components/template/Input';
 import { fields } from '../helpers/shipping';
 
 class Account extends Component {

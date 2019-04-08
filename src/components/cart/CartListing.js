@@ -4,7 +4,7 @@ import NoSSR from 'react-no-ssr';
 import {
   decrementCartItemQuantity,
   incrementCartItemQuantity, updateCartTotal, removeItemFromCart,
-} from '../redux/actions/cart';
+} from '../../redux/actions/cart';
 import CartItem from './CartItem';
 
 

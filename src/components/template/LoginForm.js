@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import InputWrapper from './Input';
 import Button from './Button';
-import { loginFields } from '../helpers/auth'
-import { loginCustomer } from '../redux/actions/customers';
+import { loginFields } from '../../helpers/auth'
+import { loginCustomer } from '../../redux/actions/customers';
 import Router from 'next/router';
 
 

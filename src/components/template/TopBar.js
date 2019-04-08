@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
 import { connect } from 'react-redux';
-import { Link } from '../routes';
+import { Link } from '../../routes';
 import AuthModal from './Modal';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import { Dropdown } from 'react-bootstrap';
@@ -9,9 +9,9 @@ import { Dropdown } from 'react-bootstrap';
 import RegisterForm from './Register';
 
 import LoginForm from './LoginForm';
-import CartWidget from './CartWidget';
+import CartWidget from '../cart/CartWidget';
 import { ToastContainer, toast } from "react-toastify";
-import { logoutCustomer } from '../redux/actions/customers';
+import { logoutCustomer } from '../../redux/actions/customers';
 
 class TopBar extends Component {
   constructor(props, context) {

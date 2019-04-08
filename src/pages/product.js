@@ -1,8 +1,8 @@
 import React, { Fragment, Component } from 'react';
-import TopBar from '../components/TopBar';
-import ProductHeader from '../components/ProductHeader';
-import ProductReviews from '../components/ProductReviews';
-import ProductHero from '../components/ProductHero';
+import TopBar from '../components/template/TopBar';
+import ProductHeader from '../components/product/ProductHeader';
+import ProductReviews from '../components/product/ProductReviews';
+import ProductHero from '../components/product/ProductHero';
 
 import { getProductById, getProductReviews } from '../services/api';
 

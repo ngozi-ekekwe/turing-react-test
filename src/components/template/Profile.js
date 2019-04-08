@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import InputWrapper from './Input';
-import { fields } from '../helpers/shipping';
+import { fields } from '../../helpers/shipping';
 
 class Profile extends Component {
 

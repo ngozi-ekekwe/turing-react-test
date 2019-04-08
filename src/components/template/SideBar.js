@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from '../routes';
+import { Link } from '../../routes';
 import Loader from './Loader';
 
 class SideBar extends Component {

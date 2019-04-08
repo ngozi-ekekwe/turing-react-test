@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CartWidget from './CartWidget';
+import CartWidget from '../cart/CartWidget';
 import { withRouter } from 'next/router';
-import { Link } from '../routes';
+import { Link } from '../../routes';
 import { ToastContainer } from "react-toastify";
 
 import Loader from './Loader';

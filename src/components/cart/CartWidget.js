@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CartListing from './CartListing';
-import Button from './Button';
-import { Link } from '../routes';
+import Button from '../template/Button';
+import { Link } from '../../routes';
 
 const CartWidget = ({
   toggleCartWidget,

@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '../components/Button';
-import { Link } from '../routes'
+import Button from '../template/Button';
+import { Link } from '../../routes'
 const imageDirectory = process.env.IMAGE_DIRECTORY
 
 const ProductCard = ({ product }) => {

@@ -9,7 +9,6 @@ const Button = ({text, onClick, loading}) => {
         {text}
       </button>
       }
-
       {
         loading &&
         <Loader />

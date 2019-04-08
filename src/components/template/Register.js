@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signupFields } from '../helpers/auth';
+import { signupFields } from '../../helpers/auth';
 import InputWrapper from './Input';
 import Button from './Button';
-import { createCustomer } from '../redux/actions/customers';
+import { createCustomer } from '../../redux/actions/customers';
 
 class Register extends Component {
 

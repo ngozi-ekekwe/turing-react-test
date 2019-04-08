@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductQuantityBox from './ProductQuantityBox';
+import ProductQuantityBox from '../product/ProductQuantityBox';
 const imageDirectory = process.env.IMAGE_DIRECTORY;
 
 const CartItem = ({

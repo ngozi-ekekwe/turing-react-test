@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Link } from '../routes';
+import { Link } from '../../routes';
 
 class ProductHeader extends Component {
 

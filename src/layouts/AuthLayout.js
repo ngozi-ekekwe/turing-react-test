@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import ProductHeader from '../components/ProductHeader';
-import TopBar from '../components/TopBar';
+import TopBar from '../components/template/TopBar';
 
 const AuthenticationLayout = ({ children }) => {
   return (

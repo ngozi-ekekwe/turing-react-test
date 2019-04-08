@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import Header from '../components/Header';
-import TopBar from '../components/TopBar';
+import Header from '../components/template/Header';
+import TopBar from '../components/template/TopBar';
 
 const DefaultLayout = ({ children }) => {
   return (

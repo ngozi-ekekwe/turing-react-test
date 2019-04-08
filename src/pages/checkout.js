@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { connect } from 'react-redux';
-import InputWrapper from '../components/Input';
-import CartListing from '../components/CartListing';
-import Profile from '../components/Profile';
+import InputWrapper from '../components/template/Input';
+import CartListing from '../components/cart/CartListing';
+import Profile from '../components/template/Profile';
 
 
 class Checkout extends Component {

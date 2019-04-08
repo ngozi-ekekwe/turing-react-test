@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { find as _find } from 'lodash';
-import Button from './Button';
+import Button from '../template/Button';
 import ProductQuantityBox from './ProductQuantityBox';
 import ProductAtrributes from './ProductAtrributes';
 const imageDirectory = process.env.IMAGE_DIRECTORY;
