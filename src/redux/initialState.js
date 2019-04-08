@@ -38,6 +38,8 @@ export default {
   regions: {
     shipping_regions: [],
     error: [],
+    shipping: [],
+    shipping_region_id: null,
     shipping_id: null
   }
 }

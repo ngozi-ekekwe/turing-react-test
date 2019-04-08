@@ -31,7 +31,6 @@ class Profile extends Component {
 
   loadState() {
     const { customer } = this.props;
-    console.log(customer)
     this.setState({
       address_1: customer.address_1,
       city: customer.city,
@@ -44,14 +43,15 @@ class Profile extends Component {
   }
 
   onSelectChange = (e) => {
-    this.setState({
-      // shipping_region: 
-    })
+    this.props.getDeliveryOptions(e.target.value)
+  }
+
+  onShipmentIdChnage = (e) => {
+    this.props.setShippingId(e.target.value)
   }
 
   render() {
-    console.log(this.state, 'I got called')
-    const { shipment } = this.props;
+    const { shipment, shipping_options } = this.props;
     return (
       <Fragment>
         <div className="row">
@@ -70,6 +70,7 @@ class Profile extends Component {
         </div>
         <div className="row">
           <div className="col-6">
+            <label className="form-label">Regions</label>
             <InputWrapper>
               <select className="custom-select" id="inputGroupSelect01" onChange={this.onSelectChange}>
                 {shipment && shipment.map((shi) => {
@@ -79,10 +80,11 @@ class Profile extends Component {
             </InputWrapper>
           </div>
           <div className="col-6">
+            <label className="form-label">Delivery Options</label>
             <InputWrapper>
-              <select className="custom-select" id="inputGroupSelect01" onChange={this.onSelectChange}>
-                {shipment && shipment.map((shi) => {
-                  return <option value={shi.shipping_region_id}>{shi.shipping_region}</option>
+              <select className="custom-select" id="inputGroupSelect01" onChange={this.onShipmentIdChnage}>
+                {shipping_options && shipping_options.map((shi) => {
+                  return <option value={shi.shipping_id}>{shi.shipping_type}</option>
                 })}
               </select>
             </InputWrapper>
@@ -98,7 +100,8 @@ class Profile extends Component {
 function mapStateToProps(state, props) {
   return {
     customer: state.customer.customer,
-    shipment: state.shipment.shipping_regions
+    shipment: state.shipment.shipping_regions,
+    shipping_options: state.shipment.shipping
 
   }
 }
@@ -106,7 +109,9 @@ function mapStateToProps(state, props) {
 const mapDispatchToProps = (dispatch) => {
   return {
     getAllShippingRegions: () => dispatch({ type: 'GET_ALL_REGIONS' }),
-    setShipmentId: (id) => dispatch({ type: 'SET_SHIPMENT_ID', id })
+    setShipmentId: (id) => dispatch({ type: 'SET_SHIPMENT_ID', id }),
+    getDeliveryOptions: (id) => dispatch({type: 'GET_SHIPPING_ID', id}),
+    setShippingId: (shipping_id) => dispatch({type: 'SET_SHIPPING_ID', shipping_id})
   }
 }
 
