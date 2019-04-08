@@ -4,6 +4,7 @@ import OrdersTable from '../components/order/OrdersTable';
 import { connect } from 'react-redux';
 import InputWrapper from '../components/template/Input';
 import { fields } from '../helpers/shipping';
+import Profile from '../components/template/Profile';
 
 class Account extends Component {
   constructor(props) {
@@ -26,7 +27,8 @@ class Account extends Component {
         <div className="container mt-4">
           <div className="row">
             <div className="col-6">
-              {
+            <Profile />
+              {/* {
                 fields.map((field, i) => {
                   return (
                     <InputWrapper key={i}>
@@ -35,7 +37,7 @@ class Account extends Component {
                   )
                 })
               }
-              <button className="btn mt-3" onClick={this.updateProfile}>UPDATE PROFILE</button>
+              <button className="btn mt-3" onClick={this.updateProfile}>UPDATE PROFILE</button> */}
             </div>
             <div className="col-6"><OrdersTable orders={orders} /></div>
           </div>

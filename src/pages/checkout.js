@@ -5,6 +5,7 @@ import InputWrapper from '../components/template/Input';
 import CartListing from '../components/cart/CartListing';
 import Profile from '../components/template/Profile';
 import { generateShoppingCartUniqueID, addItemToCart } from '../services/api';
+import Payment from '../components/Payment'; 
 
 
 class Checkout extends Component {
@@ -51,13 +52,13 @@ class Checkout extends Component {
       //   </div>)
       // }
 
-      // case 1 : {
-      //   return <Profile />
-      // }
-
-      case 1: {
-        return 'payment'
+      case 1 : {
+        return <Profile />
       }
+
+      // case 1: {
+      //   return <Payment />
+      // }
 
       case 4: {
         return 'success'
