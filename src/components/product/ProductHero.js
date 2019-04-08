@@ -78,6 +78,7 @@ class ProductHero extends Component {
   render() {
     const { quantity, currentImage } = this.state;
     const { product, attributes } = this.props;
+    console.log(product)
     let colorAttributes = []
     let sizeAttributes = [];
     attributes && attributes.filter((attribute) => {
@@ -110,7 +111,7 @@ class ProductHero extends Component {
                 <h1 className="name">{product.name}</h1>
                 <div className="d-flex">
                   <p className={`price ${product.discounted_price !== "0.00" ? 'strike' : ''}`}>${product.price}</p>
-                  { !product.discounted_price === "0.00" && <p className="price discount pl-3">${product.discounted_price}</p>}
+                  { product.discounted_price !== "0.00" && <p className="price discount pl-3">${product.discounted_price}</p>}
                 </div>
 
                 <h3 className="mt-3 mb-3">PRODUCT DETAILS</h3>

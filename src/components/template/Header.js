@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import CartWidget from '../cart/CartWidget';
 import { withRouter } from 'next/router';
 import { Link } from '../../routes';
+import Router from 'next/router';
 import { ToastContainer } from "react-toastify";
 
 import Loader from './Loader';
@@ -26,7 +27,9 @@ class Header extends Component {
   }
 
   logout = () => {
-    const token = localStorage.removeItem('token');
+    localStorage.removeItem('user-key');
+    localStorage.removeItem('state')
+    Router.push('/')
   }
 
   onSearchChange = (e) => {

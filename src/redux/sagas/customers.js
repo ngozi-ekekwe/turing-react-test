@@ -27,9 +27,7 @@ export function* loginCustomerSaga(customer) {
       yield put(createCustomerSuccess(response.user))
       Router.push('/')
     }
-    else {
-      yield put(createCustomerFailure(response))
-    }
+    yield put(createCustomerFailure(response))
   }catch(err) {
     yield put(createCustomerFailure(err))
   }

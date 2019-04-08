@@ -28,13 +28,17 @@ class Login extends Component {
     loginCustomer(this.state)
   }
 
+  resetLoader = () => {
+    this.setState({ loading: false })
+  }
+
 
   render() {
-    const { error, customer} = this.props;
+    const { error, customer } = this.props;
     const { loading } = this.state;
     return (
       <div className="container">
-        {error && error.error &&<p className="has-error">{ error && error.error.message}</p>}
+        {error && error.error && loading === true && <p className="has-error">{error && error.error.message}</p>}
         <div>
           {
             loginFields.map((field, i) => {
@@ -45,9 +49,14 @@ class Login extends Component {
               )
             })
           }
-          <div className="mt-4 txt-align">
-            <Button text="SIGN IN" onClick={this.onClick} loading={loading && !error } />
-          </div>
+          {loading === false && <div className="mt-4 txt-align">
+            <Button text="SIGN IN" onClick={this.onClick} loading={loading} />
+          </div>}
+          {loading === true && error &&
+            <div className="mt-4 txt-align">
+              <Button text="RETRY" onClick={this.resetLoader} />
+            </div>
+          }
         </div>
       </div>
     )

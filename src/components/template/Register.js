@@ -27,27 +27,36 @@ class Register extends Component {
     const { createCustomer } = this.props;
     return createCustomer(this.state)
   }
+
+  resetLoader = () => {
+    this.setState({ loading: false })
+  }
   render() {
-    const { error, customer} = this.props;
+    const { error, customer } = this.props;
     const { loading } = this.state;
     return (
-        <div className="container">
-         {error && error.error &&<p className="has-error">{ error && error.error.message}</p>}
-            <div>
-                {
-                  signupFields.map((field) => {
-                    return (
-                      <InputWrapper>
-                        <input placeholder={field.placeHolder} type={field.type} onChange={this.onChange} name={field.name} />
-                      </InputWrapper>
-                    )
-                  })
-                }
-                <div className="mt-4 txt-align">
-                  <Button text="SIGN UP" onClick={this.onClick} loading={loading && !error }/>
-                </div>
-          </div>
+      <div className="container">
+        {error && error.error && loading === true && <p className="has-error">{error && error.error.message}</p>}
+        <div>
+          {
+            signupFields.map((field, i) => {
+              return (
+                <InputWrapper key={i}>
+                  <input placeholder={field.placeHolder} type={field.type} onChange={this.onChange} name={field.name} />
+                </InputWrapper>
+              )
+            })
+          }
+          {loading === false && <div className="mt-4 txt-align">
+            <Button text="SIGN UP" onClick={this.onClick} loading={loading && !error} />
+          </div>}
+          {loading === true && error &&
+            <div className="mt-4 txt-align">
+              <Button text="RETRY" onClick={this.resetLoader} />
+            </div>
+          }
         </div>
+      </div>
     )
   }
 }
@@ -65,4 +74,4 @@ const mapDispatchToProps = (dispatch) => {
   });
 }
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
