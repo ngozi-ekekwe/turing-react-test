@@ -47,8 +47,8 @@ class TopBar extends Component {
   }
 
   logout = () => {
-    localStorage.removeItem('user-key');
-    return this.props.logout()
+    localStorage.clear();
+    return Router.push('/')
   }
 
   handleShow = (form) => {
