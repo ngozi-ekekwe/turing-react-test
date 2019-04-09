@@ -1,25 +1,20 @@
 ## SHOPMATE
 front-end of an e-commerce system which allows users to search, add items to their shopping cart, create orders, and checkout successfully.
 
-## Available Scripts
+## Create evv
+- `ROOT_ENDPOINT=https://backendapi.turing.com=`
+- `IMAGE_DIRECTORY=`
 
-In the project directory, you can run:
-
-### `npm install` or `yarn install`
-Install all the dependencies of the application.
-
-### `npm dev` or `yarn dev`
-
+## Setup Locally
+- `clone repo`
+- `npm install` or `yarn install` - Install all the dependencies
+- `yarn build` - Run Next.js Build
+- `yarn dev` or `npm dev` 
+- `yarn test` to run test
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `yarn test`
 
-### Create ENV File
-
-``` ROOT_ENDPOINT=
-IMAGE_DIRECTORY=
-STRIPE_KEY=```
 
 
 ## Folder Structure
