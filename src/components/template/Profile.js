@@ -19,7 +19,6 @@ class Profile extends Component {
       shipping_region_id: null,
       email: null,
       mob_phone: null,
-      loading: false
     }
   }
 
@@ -72,7 +71,7 @@ class Profile extends Component {
 
   render() {
     const { regions, shipping_options } = this.props;
-    const { loading } = this.state;
+    const state = this.state;
     return (
       <Fragment>
         <div className="row">
@@ -112,7 +111,7 @@ class Profile extends Component {
           </div>
         </div>
         <div className="mt-2 txt-align">
-            <Button text="UPDATE PROFILE" onClick={this.updateProfile} loading={loading}/>
+            <Button text="UPDATE PROFILE" onClick={() => this.props.updateProfile(this.state)} loading={this.props.loading}/>
           </div>
       </Fragment>
     )

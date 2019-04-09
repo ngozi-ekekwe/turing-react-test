@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { signupFields } from '../../helpers/auth';
 import InputWrapper from './Input';
 import Button from './Button';
-import { createCustomer } from '../../redux/actions/customers';
+import { createCustomer } from '../../services/api';
+import Router from 'next/router';
+import { createCustomerSuccess, createCustomerFailure } from '../../redux/actions/customers';
 
 class Register extends Component {
 
@@ -24,19 +26,27 @@ class Register extends Component {
 
   onClick = () => {
     this.setState({ loading: true })
-    const { createCustomer } = this.props;
-    return createCustomer(this.state)
+    const { dispatch } = this.props;
+    createCustomer(this.state).then((res) => {
+      if(res.customer) {
+        this.setState({ loading: false })
+        localStorage.setItem('user-key', res.accessToken)
+        dispatch(createCustomerSuccess(res.customer))
+        Router.push('/')
+      }
+      else {
+        this.setState({ loading: false })
+        return dispatch(createCustomerFailure(res))
+      }
+    })
   }
 
-  resetLoader = () => {
-    this.setState({ loading: false })
-  }
   render() {
     const { error, customer } = this.props;
     const { loading } = this.state;
     return (
       <div className="container">
-        {error && error.error && loading === true && <p className="has-error">{error && error.error.message}</p>}
+        {error && error.error && <p className="has-error">{error && error.error.message}</p>}
         <div>
           {
             signupFields.map((field, i) => {
@@ -47,14 +57,9 @@ class Register extends Component {
               )
             })
           }
-          {loading === false && <div className="mt-4 txt-align">
+          <div className="mt-4 txt-align">
             <Button text="SIGN UP" onClick={this.onClick} loading={loading && !error} />
-          </div>}
-          {loading === true && error &&
-            <div className="mt-4 txt-align">
-              <Button text="RETRY" onClick={this.resetLoader} />
-            </div>
-          }
+          </div>
         </div>
       </div>
     )
@@ -68,10 +73,4 @@ function mapStateToProps(state, props) {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return ({
-    createCustomer: (customer) => dispatch(createCustomer(customer)),
-  });
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, null)(Register);

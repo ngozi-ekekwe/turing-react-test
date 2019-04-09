@@ -37,7 +37,7 @@ export const apiPostRequest = (path, body) =>
 export const apiPutRequest = (path, body) => 
 fetch(endpoint(path), setHeaderMethod('PUT', body))
 .then((res) => {
-  return res.json()
+  return res
 })
 
 
@@ -154,4 +154,9 @@ export function chargeOrder(order) {
 export async function getCartTotal(cart_id) {
   const path = `shoppingcart/totalAmount/${cart_id}`;
   return await apiGetRequest(path);
+}
+
+export function getCartItems(cart_id) {
+  const path = `shoppingcart/${cart_id}`;
+  return apiGetRequest(path);
 }

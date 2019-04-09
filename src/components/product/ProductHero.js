@@ -13,8 +13,8 @@ class ProductHero extends Component {
     super(props)
     this.state = {
       name: null,
-      color: null,
-      size: null,
+      color: 'White',
+      size: 'S',
       price: '',
       quantity: 1,
       subtotal: '',
@@ -76,7 +76,7 @@ class ProductHero extends Component {
     return addItemToCart(item)
   }
   render() {
-    const { quantity, currentImage } = this.state;
+    const { quantity, currentImage, color, size } = this.state;
     const { product, attributes } = this.props;
     let colorAttributes = []
     let sizeAttributes = [];
@@ -116,7 +116,7 @@ class ProductHero extends Component {
                 <h3 className="mt-3 mb-3">PRODUCT DETAILS</h3>
                 <p className="product-description mb-3">{product.description}</p>
 
-                {attributes && <ProductAtrributes sizeAttributes={sizeAttributes} colorAttributes={colorAttributes} attributes={attributes} onSelectAttribute={this.onSelectAttribute} />}
+                {attributes && <ProductAtrributes sizeAttributes={sizeAttributes} colorAttributes={colorAttributes} attributes={attributes} onSelectAttribute={this.onSelectAttribute} activeColor={color} activeSize={size} />}
 
                 <ProductQuantityBox quantity={quantity} increaseQuantity={this.increaseQuantity} reduceQuantity={this.reduceQuantity} />
                 <div className="mt-5">

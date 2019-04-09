@@ -3,6 +3,7 @@ import TopBar from '../components/template/TopBar';
 import ProductHeader from '../components/product/ProductHeader';
 import ProductReviews from '../components/product/ProductReviews';
 import ProductHero from '../components/product/ProductHero';
+import Header from '../components/template/Header';
 
 import { getProductById, getProductReviews } from '../services/api';
 
@@ -19,7 +20,7 @@ class Product extends Component {
     return (
       <Fragment>
       <TopBar />
-      <ProductHeader  />
+      <Header />
       <ProductHero product={product} slug={slug}/>
     </Fragment>
     )

@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-.color:focus {
+.color.active {
   border: 3px solid $color-pink;
   color: $color-white;
 }
@@ -75,7 +75,7 @@
 }
 
 
-.size:focus {
+.size.active {
   background-color: $color-pink;
   color: $color-white;
 }

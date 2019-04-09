@@ -16,7 +16,6 @@ export function* getProducts(page) {
 export function* getProductsByCategorySaga(category) {
   try {
     const products = yield call(getProductsByCategory, category)
-    console.log(products, 'products')
     yield put(getAllProductsSuccess(products))
   } catch(err) {
     yield put(getAllProductsFailure(err))

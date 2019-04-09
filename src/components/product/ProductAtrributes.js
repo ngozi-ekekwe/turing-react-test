@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const ProductAtrributes = ({ colorAttributes, sizeAttributes, onSelectAttribute }) => {
+const ProductAtrributes = ({ colorAttributes, sizeAttributes, onSelectAttribute, activeColor, activeSize }) => {
   return (
     <Fragment>
       <div>
@@ -8,7 +8,7 @@ const ProductAtrributes = ({ colorAttributes, sizeAttributes, onSelectAttribute 
         <div className="attributes mb-4">
           {colorAttributes && colorAttributes.map((attribute, i) => {
             return (
-              <button key={`attribute-${i}`} className={`color color-${attribute.attribute_value.toLowerCase()}`}onClick={()=> onSelectAttribute(attribute.attribute_value, 'color')} ></button>
+              <button key={`attribute-${i}`} className={`color color-${attribute.attribute_value.toLowerCase()} ${activeColor === attribute.attribute_value? 'active': ''}`}onClick={()=> onSelectAttribute(attribute.attribute_value, 'color')} ></button>
             )
           })}
         </div>
@@ -17,7 +17,7 @@ const ProductAtrributes = ({ colorAttributes, sizeAttributes, onSelectAttribute 
       <h3 className="mt-2 mb-4">SIZE</h3>
         <div className="attributes mb-4">
           {sizeAttributes && sizeAttributes.map((attribute, i) => {
-            return <button key={`attribute-${i}`} className={`size size-${attribute.attribute_value.toLowerCase()}`}
+            return <button key={`attribute-${i}`} className={`size size-${attribute.attribute_value.toLowerCase()} ${activeSize === attribute.attribute_value ? 'active': ''}`}
             onClick={()=> onSelectAttribute(attribute.attribute_value, 'size')}>
 
               {attribute.attribute_value}

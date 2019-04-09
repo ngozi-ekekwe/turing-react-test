@@ -5,10 +5,15 @@ import { connect } from 'react-redux';
 import InputWrapper from '../components/template/Input';
 import { fields } from '../helpers/shipping';
 import Profile from '../components/template/Profile';
+import { updateCustomerAddress } from '../services/api';
 
 class Account extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      loading: false
+    }
   }
 
   componentDidMount() {
@@ -17,7 +22,17 @@ class Account extends Component {
     }
   }
 
-  updateProfile = () => {
+  updateProfile = (state) => {
+    this.setState({
+      loading: true
+    })
+    updateCustomerAddress(state).then((res) => {
+      if(res.status === 200) {
+        this.setState({
+          loading: false
+        })
+      }
+    })
   }
 
   render() {
@@ -27,17 +42,7 @@ class Account extends Component {
         <div className="container mt-4">
           <div className="row">
             <div className="col-6">
-            <Profile />
-              {/* {
-                fields.map((field, i) => {
-                  return (
-                    <InputWrapper key={i}>
-                      <input placeholder={field.placeHolder} type={field.type} onChange={this.onChange} name={field.name} />
-                    </InputWrapper>
-                  )
-                })
-              }
-              <button className="btn mt-3" onClick={this.updateProfile}>UPDATE PROFILE</button> */}
+            <Profile updateProfile={this.updateProfile} loading={this.state.loading} />
             </div>
             <div className="col-6"><OrdersTable orders={orders} /></div>
           </div>
