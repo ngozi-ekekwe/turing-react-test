@@ -20,6 +20,11 @@ module.exports = withSass(
       ]
   
       return config
+    },
+    exportPathMap: function() {
+      return {
+        '/': { page: '/home' }
+      }
     }
   }
 )

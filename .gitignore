@@ -13,3 +13,5 @@ logs/
 yarn-error.log
 
 .env
+
+src/out

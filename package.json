@@ -35,12 +35,14 @@
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
+    "serve": "^11.0.0",
     "superagent": "^5.0.2"
   },
   "scripts": {
     "dev": "node server.js",
     "build": "next build src",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
+    "export": "next export src",
     "test": "jest"
   },
   "name": "turing-react-test",
