@@ -27,9 +27,8 @@ class Header extends Component {
   }
 
   logout = () => {
-    localStorage.removeItem('user-key');
-    localStorage.removeItem('state')
-    return Router.push('/')
+    localStorage.clear();
+    window.location.href="/"
   }
 
   onSearchChange = (e) => {
