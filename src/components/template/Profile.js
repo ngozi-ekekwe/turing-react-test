@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import InputWrapper from './Input';
+import Button from './Button'
 import { fields } from '../../helpers/shipping';
 
 class Profile extends Component {
@@ -17,7 +18,8 @@ class Profile extends Component {
       country: null,
       shipping_region_id: null,
       email: null,
-      mob_phone: null
+      mob_phone: null,
+      loading: false
     }
   }
 
@@ -26,9 +28,6 @@ class Profile extends Component {
     this.loadState()
   }
 
-  updateAddress = () => {
-
-  }
 
   loadState() {
     const { customer } = this.props;
@@ -61,27 +60,28 @@ class Profile extends Component {
   }
 
   onShipmentIdChange = (e) => {
-    console.log(e)
     this.props.setShippingId(e.target.value)
-    // this.setState({})
   }
 
   updateProfile = () => {
-    this.props.updateCustomerProfile(this.state)
+    this.setState({
+      loading: true
+    })
+    return this.props.updateCustomerProfile(this.state)
   }
 
   render() {
     const { regions, shipping_options } = this.props;
-    console.log(this.state)
+    const { loading } = this.state;
     return (
       <Fragment>
         <div className="row">
           {
             fields.map((field, i) => {
               return (
-                <div className={field.classname}>
+                <div className={field.classname} key={i}>
                   <label className="form-label">{field.label}</label>
-                  <InputWrapper key={i}>
+                  <InputWrapper>
                     <input placeholder={field.placeHolder} type={field.type} name={field.name} defaultValue={this.state[field.name]} onChange={this.onChange} />
                   </InputWrapper>
                 </div>
@@ -94,25 +94,26 @@ class Profile extends Component {
             <label className="form-label">Regions</label>
             <InputWrapper>
               <select className="custom-select" id="inputGroupSelect01" onChange={this.onSelectChange}>
-                {regions && regions.map((shi) => {
-                  return <option value={shi.shipping_region_id}>{shi.shipping_region}</option>
+                {regions && regions.map((shi, i) => {
+                  return <option  key={i} value={shi.shipping_region_id}>{shi.shipping_region}</option>
                 })}
               </select>
             </InputWrapper>
           </div>
           <div className="col-6">
             <label className="form-label">Delivery Options</label>
-            {/* <InputWrapper>
+            <InputWrapper>
               <select className="custom-select" id="inputGroupSelect01" onChange={this.onShipmentIdChange}>
-                {shipping_options && shipping_options.map((shi) => {
-                  return <option  value={shi.shipping_id}>{shi.shipping_type}</option>
+                {shipping_options && shipping_options.map((shi, i) => {
+                  return <option key={i} value={shi.shipping_id}>{shi.shipping_type}</option>
                 })}
               </select>
-            </InputWrapper> */}
+            </InputWrapper>
           </div>
-
-          <button className="btn mt-4" onClick={this.updateProfile}>UPDATE PROFILE</button>
         </div>
+        <div className="mt-2 txt-align">
+            <Button text="UPDATE PROFILE" onClick={this.updateProfile} loading={loading}/>
+          </div>
       </Fragment>
     )
   }

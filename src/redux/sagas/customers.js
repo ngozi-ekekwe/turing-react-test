@@ -36,7 +36,8 @@ export function* loginCustomerSaga(customer) {
 export function* updateCustomerProfile(data) {
   try{
     const response = yield call(updateCustomerAddress, data);
-    yield put(updateCustomerAddressSuccess(response))
+    yield put(createCustomerSuccess(data))
+    Router.push('/')
   }catch(err) {
     yield put(createCustomerFailure(err))
   }

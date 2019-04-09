@@ -27,16 +27,18 @@ class Checkout extends Component {
         product_id: item.id,
         attributes: item.attributes,
       }
-      addItemToCart(data)
+      addItemToCart(data).then((res) => {
+        console.log(res, 'this is res')
+      })
     }
   }
 
   addToCart = () => {
     const { cart } = this.props;
-   return  generateShoppingCartUniqueID().then((res) => {
+    generateShoppingCartUniqueID().then((res) => {
       const cart_id = res.cart_id
       this.props.saveUniqueId(cart_id);
-      return cart.forEach((item) => {
+      cart.forEach((item) => {
         this.addItem(item, cart_id)
         })
     });
@@ -52,13 +54,13 @@ class Checkout extends Component {
       //   </div>)
       // }
 
-      case 1 : {
-        return <Profile />
-      }
-
-      // case 1: {
-      //   return <Payment />
+      // case 2 : {
+      //   return <Profile />
       // }
+
+      case 1: {
+        return <Payment />
+      }
 
       case 4: {
         return 'success'

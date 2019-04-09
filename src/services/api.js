@@ -34,8 +34,11 @@ export const apiPostRequest = (path, body) =>
   fetch(endpoint(path), setHeaderMethod('POST', body))
     .then((res) => res.json())
 
-export const apiPutRequest = (path, body) => fetch(endpoint(path), setHeaderMethod('PUT', body))
-.then((res) => res.json())
+export const apiPutRequest = (path, body) => 
+fetch(endpoint(path), setHeaderMethod('PUT', body))
+.then((res) => {
+  return res.json()
+})
 
 
 export function getDepartments() {
@@ -136,4 +139,19 @@ export function addItemToCart(data) {
 export function updateCustomerAddress(data) {
   const path = 'customers/address';
   return apiPutRequest(path, data)
+}
+
+export function getTax() {
+  const path = 'tax';
+  return apiGetRequest(path);
+}
+
+export function chargeOrder(order) {
+  const path = 'stripe/charge';
+  return apiPostRequest(path, order)
+}
+
+export async function getCartTotal(cart_id) {
+  const path = `shoppingcart/totalAmount/${cart_id}`;
+  return await apiGetRequest(path);
 }
