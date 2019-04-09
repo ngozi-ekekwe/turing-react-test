@@ -92,7 +92,7 @@ class ProductHero extends Component {
         <div className="container">
           <div className="product-wrapper">
             <div className="row">
-              <div className="col-6">
+              <div className="col-lg-6 col-sm-12">
                 <img src={`${imageDirectory}${currentImage === 1 ? product.thumbnail : product.image_2}`} />
 
                 <div className="row image-thumbnails">

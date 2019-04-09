@@ -1,5 +1,5 @@
 ## SHOPMATE
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+front-end of an e-commerce system which allows users to search, add items to their shopping cart, create orders, and checkout successfully.
 
 ## Available Scripts
 
@@ -8,27 +8,45 @@ In the project directory, you can run:
 ### `npm install` or `yarn install`
 Install all the dependencies of the application.
 
-### `npm start` or `yarn start`
+### `npm dev` or `yarn dev`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm test`
+### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Create ENV File
+
+``` ROOT_ENDPOINT=
+IMAGE_DIRECTORY=
+STRIPE_KEY=```
+
 
 ## Folder Structure
-All the components are located in `src/Components`. Each component is placed in its own folder (e.g `Home` folder for `Home` component). All secondary/supporting components are contained in the same folder as their parent component. However, `Timestamp` and `Loading` are used multiple over several components and as such can be found in the `Extra` folder under `Components`.
+All the components  are located in `src/Components`. Each component is placed in its own folder (e.g `Home` folder for `Home` component). All Routes are located in `src/pages`. helper utility methods in `src/helpers`.
 <br>
+
+All API endpoints are located in `src/services` <br>
 
 Each file exports ONLY ONE component. <br>
 CamelCase is the primary naming convention for methods while underscores are used for data (variables) retrieved from the server.  
 
 ## Learn More (Packages)
 
-### Material UI and Bootstrap
+### NEXT.JS
+Web Framework
+
+### Bootstrap & SCSS
 Used for presentation of the frontend
+
+### REDUX $ REDUX SAGA
+Used for state management
+
+### HELMET
+Helmet helps you secure your Express.js apps by setting various HTTP headers. It's not a silver bullet, but it can help!
+
+### SUPERAGENT
+Handeling Requests
 
 ### React Stripe Checkout
 [See here](https://www.npmjs.com/package/react-stripe-checkout) for more information. <br>
@@ -46,8 +64,6 @@ This package is used to convert UNIX timestamps returned by the server to relati
 [See here](https://www.npmjs.com/package/react-router-dom) for more information.<br>
 Used primarily for app navigation. <br>
 
-### React Toastify
-[See here](https://github.com/fkhadra/react-toastify) is used for showing status messages to the user.
 
 ## Learn More (APIs)
 

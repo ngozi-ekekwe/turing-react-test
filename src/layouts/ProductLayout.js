@@ -11,10 +11,10 @@ class ProductLayout extends Component {
       <div className="products">
         <div className="container">
           <div className="row">
-            <div className="col-2 mt-2">
+            <div className="col-lg-2 col-sm-12 mt-2">
               <SideBar categories={categories} />
             </div>
-            <div className="col-10">
+            <div className="col-lg-10 col-sm-12">
               <Pagination productCount={productCount} setPage={setPage} />
               <div className="row space-evenly">
                 {

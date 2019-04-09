@@ -84,7 +84,6 @@ class CartListing extends Component {
           <div className="cart__footer">
             <div className="cart-col">
               <p className="cart__footer--total-price">
-                {/* {`Total $${parseFloat(this.calculateCartTotal(cart, previous)).toFixed(2)}`} */}
               </p>
             </div>
           </div>

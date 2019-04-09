@@ -6,7 +6,7 @@ const imageDirectory = process.env.IMAGE_DIRECTORY
 const ProductCard = ({ product }) => {
   return (
     <Link to={`/product/${product.product_id}`}>
-      <a href={`/product/${product.product_id}`} className="col-3 product-card">
+      <a href={`/product/${product.product_id}`} className="col-lg-3 product-card">
         <div className="thumbnail" style={{backgroundImage: `url(${imageDirectory}${product.thumbnail})`}}>
         </div>
         <p className="product-name">{product.name}</p>
