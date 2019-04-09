@@ -30,7 +30,7 @@ class Login extends Component {
       if(res.user) {
         localStorage.setItem('user-key', res.accessToken)
         dispatch(loginCustomerSuccess(res.user))
-        Router.push('/')
+        window.location.href="/";
       }
       else {
         this.setState({ loading: false })

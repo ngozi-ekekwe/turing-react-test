@@ -32,7 +32,7 @@ class Register extends Component {
         this.setState({ loading: false })
         localStorage.setItem('user-key', res.accessToken)
         dispatch(createCustomerSuccess(res.customer))
-        Router.push('/')
+        window.location.href="/";
       }
       else {
         this.setState({ loading: false })

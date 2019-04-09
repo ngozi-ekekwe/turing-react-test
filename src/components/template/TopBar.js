@@ -48,7 +48,7 @@ class TopBar extends Component {
 
   logout = () => {
     localStorage.clear();
-    return Router.push('/')
+    window.location.href= "/";
   }
 
   handleShow = (form) => {
