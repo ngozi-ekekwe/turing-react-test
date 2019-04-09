@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import InputWrapper from './Input';
 import Button from './Button';
 import { loginFields } from '../../helpers/auth'
-import { loginCustomer } from '../../redux/actions/customers';
+import { loginCustomerSuccess, loginCustomerFailure } from '../../redux/actions/customers';
 import Router from 'next/router';
+import { loginCustomer } from '../../services/api';
 
 
 class Login extends Component {
@@ -24,21 +25,26 @@ class Login extends Component {
 
   onClick = () => {
     this.setState({ loading: true })
-    const { loginCustomer } = this.props;
-    loginCustomer(this.state)
+    const { dispatch } = this.props;
+    loginCustomer(this.state).then((res) => {
+      if(res.user) {
+        localStorage.setItem('user-key', res.accessToken)
+        dispatch(loginCustomerSuccess(res.user))
+        Router.push('/')
+      }
+      else {
+        this.setState({ loading: false })
+        return dispatch(loginCustomerFailure(res))
+      }
+    })
   }
-
-  resetLoader = () => {
-    this.setState({ loading: false })
-  }
-
 
   render() {
     const { error, customer } = this.props;
     const { loading } = this.state;
     return (
       <div className="container">
-        {error && error.error && loading === true && <p className="has-error">{error && error.error.message}</p>}
+        {error && error.error && <p className="has-error">{error && error.error.message}</p>}
         <div>
           {
             loginFields.map((field, i) => {
@@ -49,14 +55,9 @@ class Login extends Component {
               )
             })
           }
-          {loading === false && <div className="mt-4 txt-align">
+          <div className="mt-4 txt-align">
             <Button text="SIGN IN" onClick={this.onClick} loading={loading} />
-          </div>}
-          {loading === true && error &&
-            <div className="mt-4 txt-align">
-              <Button text="RETRY" onClick={this.resetLoader} />
-            </div>
-          }
+          </div>
         </div>
       </div>
     )
@@ -70,10 +71,4 @@ function mapStateToProps(state, props) {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return ({
-    loginCustomer: (customer) => dispatch(loginCustomer(customer)),
-  });
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, null)(Login);
