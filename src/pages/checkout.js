@@ -152,7 +152,7 @@ class Checkout extends Component {
       case 4: {
         return (
           <div>
-            <div><img src="static/rocket.png" /></div>
+            <div><img src="/static/rocket.png" /></div>
             <div>
               <h2>SUCCESS</h2>
               <p>Your items will be delivered shortly!</p>

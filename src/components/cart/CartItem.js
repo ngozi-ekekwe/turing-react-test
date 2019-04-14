@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductQuantityBox from '../product/ProductQuantityBox';
+import CartArttributes from './CartArttributes';
 const imageDirectory = process.env.IMAGE_DIRECTORY;
 
 const CartItem = ({
@@ -30,21 +31,9 @@ const CartItem = ({
             </button>
           )}
         </div>
-        <div className="pl-2">
-          <p className="mb-3">SIZE</p>
-          <h4 className="text-uppercase pb-3 pt-1">
-            {size}
-          </h4>
-        </div>
-        <div className="pl-2">
-          <p className="mb-3">COLOR</p>
-          <button className={`color color-${color.toLowerCase()}`}></button>
-        </div>
-
-        <div className="pl-2">
-          <p className="mb-3">PRICE</p>
-          ${item.product.price}
-        </div>
+        <CartArttributes title="SIZE" attribute ={size} type="size"/>
+        <CartArttributes title="COLOR" attribute ={color} type="color"/>
+        <CartArttributes title="PRICE" attribute ={item.product.price} type="price"/>
       </div>
     </div>
   );

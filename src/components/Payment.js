@@ -8,7 +8,7 @@ class Checkout extends React.Component {
     return (
       <div>
         <div className="mb-2">
-        <img src="static/card.png" />
+        <img src="/static/card.png" />
         </div>
         <StripeCheckout
         stripeKey="pk_test_NcwpaplBCuTL6I0THD44heRe"

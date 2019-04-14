@@ -88,9 +88,9 @@ class Header extends Component {
 
               {search_started && <div className="search-results">
                 {searchResults.length === 0 && <Loader />}
-                {searchResults.length >= 1 && searchResults.map((product) => {
+                {searchResults.length >= 1 && searchResults.map((product, i) => {
                   return (
-                    <div className="search-item">
+                    <div className="search-item" key={`product-${i}`}>
                       <Link to={`/product/${product.product_id}`}><a href={`/product/${product.product_id}`}>{product.name}</a></Link>
                     </div>
                   )

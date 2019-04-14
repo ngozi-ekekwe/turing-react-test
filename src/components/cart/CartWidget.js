@@ -45,7 +45,6 @@ const CartWidget = ({
 
 const mapStateToProps = (state, props) => {
   return {
-    cart: [],
   customer: state.customer.customer
   }
 };
