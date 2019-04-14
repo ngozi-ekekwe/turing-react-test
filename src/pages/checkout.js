@@ -156,7 +156,7 @@ class Checkout extends Component {
             <div>
               <h2>SUCCESS</h2>
               <p>Your items will be delivered shortly!</p>
-              <button className="mt-4 btn" onClick={() => Router.push('/')}>BACK TO SHOP</button>
+              <button className="mt-4 btn" onClick={() => window.location.href="/"}>BACK TO SHOP</button>
             </div>
           </div>
         )
