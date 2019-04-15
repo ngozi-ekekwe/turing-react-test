@@ -7,7 +7,7 @@ import { getAllCategories } from '../selectors/categories';
 import { getAllProducts } from '../selectors/products';
 import Loader from '../components/template/Loader';
 
-class Home extends Component {
+export class Home extends Component {
 
   componentDidMount() {
     this.props.getAllDepartments()
