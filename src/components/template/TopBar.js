@@ -87,7 +87,7 @@ class TopBar extends Component {
               {!customer.customer_id && <div className="top-bar-auth">
                 <p>Hi!
                     <span>
-                    <button className="top-bar-auth-btn" onClick={() => this.handleShow('register')}>sign in</button>
+                    <button className="top-bar-auth-btn" onClick={() => this.handleShow('register')}>sign up</button>
                   </span> or
                     <span>
                     <button className="top-bar-auth-btn" onClick={() => this.handleShow('login')}>login</button>
@@ -128,7 +128,7 @@ class TopBar extends Component {
                     <img src="/static/black.png" />
                     <div className="cart-badge">{cart}</div>
                   </div>
-                  <p className="pl-3">Your bag: $16.00</p>
+                  <p className="pl-3">Your bag: $00.00</p>
                 </div>
               </div>
             </div>

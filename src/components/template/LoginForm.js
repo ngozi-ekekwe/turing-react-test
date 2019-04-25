@@ -27,9 +27,9 @@ class Login extends Component {
     this.setState({ loading: true })
     const { dispatch } = this.props;
     loginCustomer(this.state).then((res) => {
-      if(res.user) {
+      if(res.customer) {
         localStorage.setItem('user-key', res.accessToken)
-        dispatch(loginCustomerSuccess(res.user))
+        dispatch(loginCustomerSuccess(res.customer))
         window.location.href="/";
       }
       else {

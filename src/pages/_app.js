@@ -31,7 +31,6 @@ class MyApp extends App {
       authenticated = token ? true : false;
       dispatch(isAuthenticated(authenticated))
     }
-
     return (
       <Container>
         <Provider store={store}>

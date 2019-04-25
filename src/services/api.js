@@ -1,6 +1,6 @@
 import { agent } from 'superagent';
 import 'isomorphic-fetch';
-const rootEndpoint = process.env.ROOT_ENDPOINT || 'https://backendapi.turing.com';
+const rootEndpoint = process.env.ROOT_ENDPOINT
 
 export const endpoint = (path) => {
   if (path) {

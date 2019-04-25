@@ -72,7 +72,7 @@ class Checkout extends Component {
     });
   }
 
-  onToken = (token) => {
+  onToken = (Fet) => {
     getTax().then((res) => {
       const tax_id = res[0].tax_id;
       const token_id = token.id;
