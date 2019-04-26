@@ -13,3 +13,7 @@
 .txt-align {
   text-align: center;
 }
+
+button:disabled {
+  cursor: not-allowed;
+}

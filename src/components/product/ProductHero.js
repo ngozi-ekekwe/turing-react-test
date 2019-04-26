@@ -18,7 +18,8 @@ class ProductHero extends Component {
       price: '',
       quantity: 1,
       subtotal: '',
-      currentImage: 1
+      currentImage: 1,
+      disabled: false
     }
   }
 
@@ -120,7 +121,7 @@ class ProductHero extends Component {
 
                 <ProductQuantityBox quantity={quantity} increaseQuantity={this.increaseQuantity} reduceQuantity={this.reduceQuantity} />
                 <div className="mt-5">
-                  <Button text="ADD TO CART" onClick={this.addItemToCart} />
+                  <Button text="ADD TO CART" onClick={this.addItemToCart} disabled={this.state.disabled} />
                 </div>
               </div>
             </div>
